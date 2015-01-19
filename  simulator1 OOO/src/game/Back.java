@@ -31,7 +31,7 @@ import java.io.IOException;
 
 
 public class Back extends JPanel implements ActionListener {
-	long canToCredit=100000;
+	long canToCredit=1000000;
 	String shmToBild,shmToSell;
 	Hipermarket hm=new Hipermarket();
 	 MaskFormatter f1,f2;
