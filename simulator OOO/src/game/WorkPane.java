@@ -47,9 +47,9 @@ public class WorkPane extends JPanel {
 	JButton bBossPolice = new JButton("\u041D\u0430\u0447\u0430\u043B\u044C\u043D\u0438\u043A \u0432 \u0441\u0438\u043B\u043E\u0432\u044B\u0445 \u0441\u0442\u0440\u0443\u043A\u0442\u0443\u0440\u0430\u0445");
 	JButton bBossIT = new JButton("\u041D\u0430\u0447\u0430\u043B\u044C\u043D\u0438\u043A IT \u043F\u0440\u043E\u0435\u043A\u0442\u0430");
 	JButton bBossGov = new JButton("\u0413\u043B\u0430\u0432\u0430 \u043F\u0440\u0435\u0434\u043F\u0440\u0438\u044F\u0442\u0438\u044F");
-	private final JLabel lblNewLabel_8 = new JLabel("New label");
-	private final JLabel lblNewLabel_9 = new JLabel("New label");
-	private final JLabel lblNewLabel_10 = new JLabel("New label");
+	private final JLabel lblNewLabel_8 = new JLabel("2-5");
+	private final JLabel lblNewLabel_9 = new JLabel("2-3");
+	private final JLabel lblNewLabel_10 = new JLabel("1-2");
 	private final JLabel lblNewLabel_11 = new JLabel("\u043D\u0435\u0442");
 	private final JLabel label = new JLabel("16500");
 	private final JLabel label_1 = new JLabel("18750");
@@ -78,14 +78,14 @@ public class WorkPane extends JPanel {
 	private final JLabel label_24 = new JLabel("New label");
 	private final JLabel label_25 = new JLabel("New label");
 	private final JLabel label_26 = new JLabel("New label");
-	private final JLabel label_54 = new JLabel("New label");
-	private final JLabel label_55 = new JLabel("New label");
-	private final JLabel label_56 = new JLabel("New label");
-	private final JLabel label_57 = new JLabel("New label");
-	private final JLabel label_58 = new JLabel("New label");
-	private final JLabel label_59 = new JLabel("New label");
-	private final JLabel label_60 = new JLabel("New label");
-	private final JLabel label_61 = new JLabel("New label");
+	private final JLabel label_54 = new JLabel("2-5");
+	private final JLabel label_55 = new JLabel("2-5");
+	private final JLabel label_56 = new JLabel("2-5");
+	private final JLabel label_57 = new JLabel("2-5");
+	private final JLabel label_58 = new JLabel("2-5");
+	private final JLabel label_59 = new JLabel("2-5");
+	private final JLabel label_60 = new JLabel("2-5");
+	private final JLabel label_61 = new JLabel("2-5");
 	private final JLabel label_62 = new JLabel("New label");
 	private final JLabel label_63 = new JLabel("New label");
 	private final JLabel label_64 = new JLabel("New label");
@@ -220,28 +220,28 @@ public class WorkPane extends JPanel {
 		label_79.setFont(new Font("Tahoma", Font.BOLD, 14));
 		label_80.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel label_81 = new JLabel("New label");
+		JLabel label_81 = new JLabel("2-3");
 		label_81.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel label_82 = new JLabel("New label");
+		JLabel label_82 = new JLabel("2-3");
 		label_82.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel label_83 = new JLabel("New label");
+		JLabel label_83 = new JLabel("1-2");
 		label_83.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel label_84 = new JLabel("New label");
+		JLabel label_84 = new JLabel("1-3");
 		label_84.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel label_85 = new JLabel("New label");
+		JLabel label_85 = new JLabel("2-4");
 		label_85.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel label_86 = new JLabel("New label");
+		JLabel label_86 = new JLabel("3-4");
 		label_86.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel label_87 = new JLabel("New label");
+		JLabel label_87 = new JLabel("3-4");
 		label_87.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel label_88 = new JLabel("New label");
+		JLabel label_88 = new JLabel("3-4");
 		label_88.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
 		JLabel label_89 = new JLabel("New label");
@@ -311,28 +311,28 @@ public class WorkPane extends JPanel {
 		JLabel label_29 = new JLabel("18 \u043B\u0435\u0442");
 		label_29.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel label_30 = new JLabel("New label");
+		JLabel label_30 = new JLabel("1-2");
 		label_30.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel label_31 = new JLabel("New label");
+		JLabel label_31 = new JLabel("1-2");
 		label_31.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel label_32 = new JLabel("New label");
+		JLabel label_32 = new JLabel("1-2");
 		label_32.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel label_33 = new JLabel("New label");
+		JLabel label_33 = new JLabel("1-2");
 		label_33.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel label_34 = new JLabel("New label");
+		JLabel label_34 = new JLabel("1-3");
 		label_34.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel label_35 = new JLabel("New label");
+		JLabel label_35 = new JLabel("1-4");
 		label_35.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel label_36 = new JLabel("New label");
+		JLabel label_36 = new JLabel("1-4");
 		label_36.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel label_37 = new JLabel("New label");
+		JLabel label_37 = new JLabel("1-4");
 		label_37.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
 		JLabel label_38 = new JLabel("New label");
@@ -470,17 +470,18 @@ public class WorkPane extends JPanel {
 					.addGap(10)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(bPromouter, GroupLayout.PREFERRED_SIZE, 216, GroupLayout.PREFERRED_SIZE)
+							.addComponent(bPromouter, GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
 							.addGap(10)
-							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 72, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
 							.addGap(10)
-							.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblNewLabel_2, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
 							.addGap(10)
 							.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
 							.addGap(10)
 							.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
 							.addGap(10)
-							.addComponent(lblNewLabel_5, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE))
+							.addComponent(lblNewLabel_5, GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+							.addGap(10))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(bCurer, GroupLayout.PREFERRED_SIZE, 216, GroupLayout.PREFERRED_SIZE)
 							.addGap(10)

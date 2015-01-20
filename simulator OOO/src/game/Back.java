@@ -31,7 +31,8 @@ import java.io.IOException;
 
 
 public class Back extends JPanel implements ActionListener {
-	long canToCredit=1000000;
+	long canToCredit=100000,minMoney=1000;
+	
 	String shmToBild,shmToSell;
 	Hipermarket hm=new Hipermarket();
 	 MaskFormatter f1,f2;
@@ -475,15 +476,20 @@ public class Back extends JPanel implements ActionListener {
 		setLayout(groupLayout);
 		eat =(int) eat1;
 		tidy = (int)tidy1;
+		
 		if(canToCredit<100000){
 			canToCredit=100000;
+		}
+		minMoney=canToCredit/250;
+		if(minMoney<1000){
+			minMoney=1000;
 		}
 		
 	}
 
 	
 
-	public void daycount2() {
+	public void daycount2() throws IOException{
 		time2.start();
 		if (timeFast == true) {
 			day++;
@@ -496,7 +502,7 @@ public class Back extends JPanel implements ActionListener {
 
 	}
 
-	public void lern() {
+	public void lern() throws IOException{
 
 		if (KoledElekStart == true) {
 			dayToLerning = 365;
@@ -646,7 +652,7 @@ public class Back extends JPanel implements ActionListener {
 		}
 	}
 
-	public void work() {
+	public void work() throws IOException{
 
 		if (year >= 18) {
 			wp.wpan.bSaler.setEnabled(true);
@@ -705,7 +711,7 @@ public class Back extends JPanel implements ActionListener {
 
 	}
 
-	public void info() {
+	public void info() throws IOException{
 
 		s3 = "XP(Опыт)  " + (int) xp;
 		hp.lXP.setText(s3);
@@ -793,14 +799,14 @@ public class Back extends JPanel implements ActionListener {
 			if (wp.wpan.bCliner.getBackground() == Color.GREEN) {
 				dhelth = rand.nextInt(1);
 				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dtidy = 1+rand.nextInt(1);
 				xp++;
 				
 			}
 			if (wp.wpan.bCurer.getBackground() == Color.GREEN) {
 				dhelth = rand.nextInt(1);
 				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dtidy = 1+rand.nextInt(1);
 				xp++;
 				
 				
@@ -927,7 +933,7 @@ public class Back extends JPanel implements ActionListener {
 		}
 	}
 
-	public void transport() {
+	public void transport() throws IOException{
 		if(timeStart==true){
 			if(tsc.tran.bTrans1.getBackground()==Color.LIGHT_GRAY){
 				mtidy=0.98;
@@ -1352,7 +1358,7 @@ public class Back extends JPanel implements ActionListener {
 
 
 	
-	public void houseinfo(){
+	public void houseinfo ()throws IOException{
 		if(hsc.hause.bHause1.getBackground()==Color.YELLOW){
 			mEat=0.98;
 			ht1=60000;
@@ -1531,7 +1537,7 @@ public class Back extends JPanel implements ActionListener {
 		
 	}
 	
-	public void doplern(){
+	public void doplern()throws IOException{
 		if(dlsc.dl.bDL1.getBackground()==Color.yellow){
 			daydLtoL1=180;
 			x=day1-daydLS1;
@@ -1570,7 +1576,7 @@ public class Back extends JPanel implements ActionListener {
 			
 		//}
 	}
-	public void bisness(){
+	public void bisness() throws IOException{
 		siteToBay=(long) bsc.mSite.siteSToBay.getValue();
 		siteToSell=(long) bsc.mSite.siteSToSell.getValue();
 		
@@ -1646,7 +1652,7 @@ public class Back extends JPanel implements ActionListener {
 		bsc.hm.lZatrat.setText("Затраты (день) = "+hmZatrat);
 		bsc.hm.lKolvo.setText("Количество "+ hmKolvo);
 	}
-	public void invest(){
+	public void invest()throws IOException{
 		if(MoneyToPay>1){
 			insc.ban.bTakeKredit.setEnabled(false);
 		}
@@ -1688,8 +1694,12 @@ public class Back extends JPanel implements ActionListener {
 		tsc.lTransportTrat.setText("Затраты(год) = "+tranTrat);
 		hp.LAllTrat.setText("Затраты за год = "+ allTrat);
 	}
-	public void daycount() {
+	public void daycount() throws IOException{
 		//meat
+		minMoney=canToCredit/250;
+		if(minMoney<1000){
+			minMoney=1000;
+		}
 		time1.start();
 		if (timeStart == true) {
 			day++;
@@ -1737,7 +1747,7 @@ public class Back extends JPanel implements ActionListener {
 			JOptionPane.showMessageDialog(null, "Yuo Deid");
 		System.exit(1);
 		}
-		if(money<-1000){
+		if(money<-minMoney){
 			JOptionPane.showMessageDialog(null, "Вы банкрот");
 			System.exit(2);
 		}
@@ -1757,19 +1767,64 @@ public class Back extends JPanel implements ActionListener {
 		return;
 	}
 	public void actionPerformed(ActionEvent e) {
-		daycount();
+		try {
+			daycount();
+		} catch (IOException e1) {
+			time1.stop();
+		
+		}
 		Save();
 			
-			bisness();
+			try {
+				bisness();
+			} catch (IOException e1) {
+				time1.stop();
+			
+			}
 		
-		invest();
-		work();
-		lern();
-		info();
-		transport();
-		doplern();
+		try {
+			invest();
+		} catch (IOException e1) {
+			time1.stop();
+			
+		}
+		try {
+			work();
+		} catch (IOException e1) {
+			
+			time1.stop();
+		}
+		try {
+			lern();
+		} catch (IOException e1) {
+			time1.stop();
+			
+		}
+		try {
+			info();
+		} catch (IOException e1) {
+			time1.stop();
+			
+		}
+		try {
+			transport();
+		} catch (IOException e1) {
+			time1.stop();
+			
+		}
+		try {
+			doplern();
+		} catch (IOException e1) {
+			time1.stop();
+			
+		}
 		doprab();
-		houseinfo();
+		try {
+			houseinfo();
+		} catch (IOException e1) {
+			time1.stop();
+			
+		}
 		trat();
 
 		// daycount2();

@@ -14,7 +14,7 @@ public class BisnessSC extends JPanel {
 		setLayout(null);
 		
 		
-		spBisness.setBounds(5, 50, 705, 425);
+		spBisness.setBounds(5, 50, 693, 425);
 		add(spBisness);
 		spBisness.setViewportView(bisn);
 
