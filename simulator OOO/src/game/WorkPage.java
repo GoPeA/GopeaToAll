@@ -40,7 +40,7 @@ public class WorkPage extends JPanel {
 		WorkBar.setMaximum(15);
 		WorkBar.setStringPainted(true);
 		
-		JLabel lblf = new JLabel("\u0417/\u041F, -F, -\u0441\u0447\u0430\u0441\u0442\u044C\u0435, -HP, \u0443\u0441\u043B\u043E\u0432\u0438\u044F \u043F\u0440\u0438\u0435\u043C\u0430 \u043D\u0430 \u0440\u0430\u0431\u043E\u0442\u0443");
+		JLabel lblf = new JLabel("\u0417/\u041F, -F%, -\u0441\u0447\u0430\u0441\u0442\u044C\u0435%, -HP%, \u0443\u0441\u043B\u043E\u0432\u0438\u044F \u043F\u0440\u0438\u0435\u043C\u0430 \u043D\u0430 \u0440\u0430\u0431\u043E\u0442\u0443");
 		lblf.setHorizontalAlignment(SwingConstants.CENTER);
 		lblf.setFont(new Font("Tahoma", Font.BOLD, 13));
 		GroupLayout groupLayout = new GroupLayout(this);

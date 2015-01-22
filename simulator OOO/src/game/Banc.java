@@ -87,7 +87,7 @@ public class Banc extends JPanel {
 		
 		lallKreditToPay.setBounds(324, 235, 346, 23);
 		add(lallKreditToPay);
-		tfMoney.setModel(new SpinnerNumberModel(new Long(1000), new Long(1000), null, new Long(100)));
+		tfMoney.setModel(new SpinnerNumberModel(new Long(1000), new Long(0), null, new Long(100)));
 		tfMoney.setBounds(10, 108, 290, 20);
 		
 		add(tfMoney);

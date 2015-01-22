@@ -113,7 +113,7 @@ public class WorkPane extends JPanel {
 		JLabel lblNewLabel = new JLabel("10800");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		JLabel lblNewLabel_2 = new JLabel("2-5");
+		JLabel lblNewLabel_2 = new JLabel("0.5-2.5");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
 		JLabel lblNewLabel_3 = new JLabel("1-2");

@@ -32,12 +32,13 @@ import java.io.IOException;
 
 public class Back extends JPanel implements ActionListener {
 	long canToCredit=100000,minMoney=1000;
-
+	long piTakePutMoney,PlusOrMinus;
+	double piMoney,piInvestPrib;
 	String shmToBild,shmToSell;
 	Hipermarket hm=new Hipermarket();
 	 MaskFormatter f1,f2;
 	long hmKolvo,hmPribil,hmZatrat,hmToBild,hmToSell;
-	double eat1=100,health1=100,tidy1=100,meat=1,mtidy=1;
+	double eat1=5000,health1=5000,tidy1=5000,meat=1,mtidy=1;
 	long allTrat,hauseTrat,tranTrat;
 	long ht1,ht2,ht3,ht4,ht5,ht6,ht7,ht8,ht9,ht10,ht11,ht12,ht13,ht14,ht15,ht16,ht17
 	,ht18,ht19,ht20,ht21,ht22,ht23,ht24,ht25;
@@ -77,7 +78,7 @@ public class Back extends JPanel implements ActionListener {
 	ResMarkAction rma = new ResMarkAction();
 	ActionWork aw = new ActionWork();
 	double mEat,mEn;
-	int eat = 100, tidy = 100,   healthy = 100, deat, dhelth,dtidy;
+	int  eat=5000,tidy = 5000,   healthy = 5000, deat, dhelth,dtidy;
 	int day = 0,year = 16,day1;
 	int h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13,h14,h15,h16,h17,h18,h19,h20,h21,h22,h23,h24,h25;
 	long prestige;
@@ -97,7 +98,7 @@ public class Back extends JPanel implements ActionListener {
 	long Toplivo;
 	double xp;
 	int zarplata, zarpday, dayZarp;
-	long money =500L;
+	long money =500000000L;
 	
 	Random rand = new Random();
 	Timer time1 = new Timer(1000, this);
@@ -126,19 +127,19 @@ public class Back extends JPanel implements ActionListener {
 		//hm.tfSell= new JFormattedTextField(f1);
 		insc.ban.lmaxCredit.setText("Доступен кредит = "+canToCredit+"Р");
 		canToCredit=zarpday*1095+200*(kolLarek*1750+kolSite*2000+kolShop*3500+hmKolvo*17000);
-		BarHealth.setMaximum(200);
+		BarHealth.setMaximum(10000);
 		BarHealth.setStringPainted(true);
 		BarHealth.setForeground(new Color(0, 0, 128));
 		BarHealth
 				.setToolTipText("\u0417\u0434\u043E\u0440\u043E\u0432\u044C\u0435\r\n");
-		BarHealth.setValue(healthy);
+		BarHealth.setValue(5000);
 		BarTidy.setToolTipText("\u0411\u043E\u0434\u0440\u043E\u0441\u0442\u044C");
-		BarTidy.setMaximum(200);
+		BarTidy.setMaximum(10000);
 		s2 = "Деньги  Р " + money;
 		BarTidy.setForeground(new Color(0, 0, 128));
 		BarTidy.setStringPainted(true);
 		BarTidy.setOrientation(SwingConstants.VERTICAL);
-		BarTidy.setValue(tidy);
+		BarTidy.setValue(5000);
 		bStopTime.setBackground(UIManager.getColor("Button.background"));
 		bStopTime.setIcon(new ImageIcon(Back.class.getResource("/res/pause.JPG")));
 		bStopTime.addActionListener(new ActionListener() {
@@ -302,13 +303,13 @@ public class Back extends JPanel implements ActionListener {
 		zone.setTitleAt(1, "\u0420\u0430\u0431\u043E\u0442\u0430");
 		zone.setEnabledAt(1, true);
 		BarFood.setToolTipText("\u0415\u0434\u0430");
-		BarFood.setMaximum(200);
+		BarFood.setMaximum(10000);
 		lpsc.LernBar.setMaximum(dayToLerning);
 		lpsc.LernBar.setValue(day1 - dayStartLern);
 
 		BarFood.setForeground(new Color(0, 0, 128));
 		BarFood.setStringPainted(true);
-		BarFood.setValue(eat);
+		BarFood.setValue(5000);
 		BarFood.setOrientation(SwingConstants.VERTICAL);
 
 		lDays.setText("");
@@ -390,6 +391,9 @@ public class Back extends JPanel implements ActionListener {
 		bsc.hm.bBild.addActionListener(ba);
 		bsc.hm.bSell.addActionListener(ba);
 		bsc.hm.bStartComp.addActionListener(ba);
+		insc.pi.bBack.addActionListener(ina);
+		insc.pi.bInvest.addActionListener(ina);
+		insc.pi.bTakeMoney.addActionListener(ina);
 		
 		
 		
@@ -719,7 +723,7 @@ public class Back extends JPanel implements ActionListener {
 		hp.lPrestige.setText(s4);
 		wp.WorkBar.setValue(dayZarp);
 		;
-		BarFood.setValue(eat);
+		BarFood.setValue((int)eat1);
 		BarTidy.setValue(tidy);
 		BarHealth.setValue(healthy);
 		lernpan.LernBar.setMaximum(dayToLerning);
@@ -728,30 +732,30 @@ public class Back extends JPanel implements ActionListener {
 		// if(timeStart==true){
 		if (timeStart == true) {
 			if (wp.wpan.bPromouter.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 				
 			}
 			if (wp.wpan.bAdmin.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 				
 			}
 			if (wp.wpan.bBoss.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 				
 			}
 			if (wp.wpan.bBossDoc.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 				
 			}
@@ -790,143 +794,143 @@ public class Back extends JPanel implements ActionListener {
 				
 			}
 			if (wp.wpan.bBossZeh.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 				
 			}
 			if (wp.wpan.bCliner.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = 1+rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = 50+rand.nextInt(50);
 				xp++;
 				
 			}
 			if (wp.wpan.bCurer.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = 1+rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = 50+rand.nextInt(50);
 				xp++;
 				
 				
 			}
 			if (wp.wpan.bDoc.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 				
 
 			}
 			if (wp.wpan.bDriverB.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 				
 			}
 			if (wp.wpan.bDriverC.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 				
 			}
 			if (wp.wpan.bDriverD.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 				
 			}
 			if (wp.wpan.bElek.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 				
 			}
 			if (wp.wpan.bInginer.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 				
 			}
 			if (wp.wpan.bITSpec.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 				
 			}
 			if (wp.wpan.bMeneger.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 				
 			}
 			if (wp.wpan.bPoliceman.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 				
 			}
 			if (wp.wpan.bProgrammer.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 				
 			}
 			if (wp.wpan.bSaler.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 			}
 			if (wp.wpan.bSanitar.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 			
 			}
 			if (wp.wpan.bSanteh.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 				
 			}
 			if (wp.wpan.bSekretar.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 				
 			}
 			if (wp.wpan.bUrist.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 				
 			}
 			if (wp.wpan.bWorkerZavod.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 				
 			}
 			if (wp.wpan.bZamBoss.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(1);
-				deat = rand.nextInt(3);
-				dtidy = rand.nextInt(1);
+				dhelth = rand.nextInt(50);
+				deat = rand.nextInt(150);
+				dtidy = rand.nextInt(50);
 				xp++;
 				
 			}
@@ -948,7 +952,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans2.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.96;
 				t2Live=day1-t2LiveS;
 				tst2=500;
 				tsc.tran.bTrans2.setText("Велосипед 7'500Р 500Р/год "+ t2Live+" /1825дней(5 лет)");
@@ -961,7 +965,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans3.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.90;
 				t3Live=day1-t3LiveS;
 				tst3=4500;
 				tsc.tran.bTrans3.setText("Мопед 15'000Р 4'500Р/год "+ t3Live+" /1825дней(5 лет)");
@@ -974,7 +978,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans4.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.89;
 				t4Live=day1-t4LiveS;
 				tst4=+7500;
 				tsc.tran.bTrans4.setText("Скутер 35'000Р 7'500Р/год "+ t4Live+" /1825дней(5 лет)");
@@ -987,7 +991,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans5.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.88;
 				t5Live=day1-t5LiveS;
 				tst5=12500;
 				tsc.tran.bTrans1.setText("Мотоцикл 70'000Р 12'500Р/год "+ t5Live+" /1825дней(5 лет)");
@@ -1000,7 +1004,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans6.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.78;
 				t6Live=day1-t6LiveS;
 				tst6=+15000;
 				tsc.tran.bTrans6.setText("ВАЗ 2114 150'000Р 15'000Р/год "+ t6Live+" /2555дней(7 лет) + бензин");
@@ -1013,7 +1017,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans7.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.75;
 				t7Live=day1-t7LiveS;
 				tst7=+20000;
 				tsc.tran.bTrans7.setText("Lada 110 200'000Р 20'000Р/год "+ t7Live+" /2737дней(7,5 лет) + бензин");
@@ -1026,7 +1030,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans8.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.73;
 				t8Live=day1-t8LiveS;
 				tst8=20500;
 				tsc.tran.bTrans8.setText("Lada Kalina 350'000Р 20'500Р/год "+ t8Live+" /2737дней(7,5 лет) + бензин");
@@ -1039,7 +1043,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans9.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.72;
 				t9Live=day1-t9LiveS;
 				tst9=22000;
 				tsc.tran.bTrans9.setText("Daewoo Nexia 420'000Р 22'000Р/год "+ t9Live+" /2737дней(7,5 лет) + бензин");
@@ -1052,7 +1056,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans10.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.7;
 				t10Live=day1-t10LiveS;
 				tst10=25000;
 				tsc.tran.bTrans10.setText("Lada Largus 570'000Р 25'000Р/год "+ t10Live+" /2737дней(7,5 лет) + бензин");
@@ -1065,7 +1069,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans11.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.68;
 				t11Live=day1-t11LiveS;
 				tst11=25000;
 				tsc.tran.bTrans11.setText("Renault Logan 650'000Р 25'000Р/год "+ t11Live+" /2920дней(8 лет) + бензин");
@@ -1078,7 +1082,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans12.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.65;
 				t12Live=day1-t12LiveS;
 				tst12=28000;
 				tsc.tran.bTrans12.setText("УАЗ Патриот 800'000Р 28'000Р/год "+ t12Live+" /2920дней(8 лет) + бензин");
@@ -1091,7 +1095,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans13.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.62;
 				t13Live=day1-t13LiveS;
 				tst13=35000;
 				tsc.tran.bTrans13.setText("Ford FocusIII 1'000'000Р 35'000Р/год "+ t13Live+" / 2920дней(8 лет) + бензин");
@@ -1104,7 +1108,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans14.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.58;
 				t14Live=day1-t14LiveS;
 				tst14=40000;
 				tsc.tran.bTrans14.setText("Ssang Yong Action 1'500'000Р 40'000Р/год "+ t14Live+" /2920дней(8 лет) + бензин");
@@ -1117,7 +1121,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans15.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.56;
 				t15Live=day1-t15LiveS;
 				tst15=50000;
 				tsc.tran.bTrans15.setText("VolksWagen Touareg 1'800'000Р 50'000Р/год "+ t15Live+" /3285дней(9 лет) + бензин");
@@ -1130,7 +1134,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans16.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.53;
 				t16Live=day1-t16LiveS;
 				tst16=80000;
 				tsc.tran.bTrans16.setText("Mersedes-Benz 2'500'000Р 80'000Р/год "+ t16Live+" /3650дней(10 лет) + бензин");
@@ -1143,7 +1147,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans17.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.51;
 				t17Live=day1-t17LiveS;
 				tst17=100000;
 				tsc.tran.bTrans17.setText("BMW X6 4'000'000Р 100'000Р/год "+ t17Live+" /3650дней(5 лет) + бензин");
@@ -1156,7 +1160,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans18.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.51;
 				t18Live=day1-t18LiveS;
 				tst18=100000;
 				tsc.tran.bTrans18.setText("Audi 4'000'000Р 100'000Р/год "+ t18Live+" /3650дней(10 лет) + бензин");
@@ -1169,7 +1173,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans19.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.48;
 				t19Live=day1-t19LiveS;
 				tst19=200000;
 				tsc.tran.bTrans19.setText("Lexus 5'500'000Р 200'000Р/год "+ t19Live+" /4015дней(11 лет) + бензин");
@@ -1182,7 +1186,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans20.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.45;
 				t20Live=day1-t20LiveS;
 				tst20=175000;
 				tsc.tran.bTrans20.setText("Porshe 7'500'000Р 175'000Р/год "+ t20Live+" /4015дней(11 лет) + бензин");
@@ -1195,7 +1199,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans21.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.42;
 				t21Live=day1-t21LiveS;
 				tst21=250000;
 				tsc.tran.bTrans21.setText("Ferari 12'000'000Р 250'000Р/год "+ t21Live+" /4015дней(11 лет) + бензин");
@@ -1208,7 +1212,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans22.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.40;
 				t22Live=day1-t22LiveS;
 				tst22=300000;
 				tsc.tran.bTrans22.setText("Lamborgini 18млнР 300'000Р/год "+ t22Live+" /4015дней(11 лет) + бензин");
@@ -1221,7 +1225,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans23.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.37;
 				t23Live=day1-t23LiveS;
 				tst23=350000;
 				tsc.tran.bTrans23.setText("Bentli 25млн Р 350'000Р/год "+ t23Live+" /4015дней(11 лет)+ бензин");
@@ -1234,7 +1238,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans24.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.3;
 				t24Live=day1-t24LiveS;
 				tst24=2000000;
 				tsc.tran.bTrans24.setText("Вертолет 50млн Р 2млн Р/год "+ t24Live+" /7300дней(20 лет)");
@@ -1247,7 +1251,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans25.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.28;
 				t25Live=day1-t25LiveS;
 				tst25=3000000;
 				tsc.tran.bTrans25.setText("Bugatti 130млн Р 3млн /год "+ t25Live+" /5475дней(15 лет)");
@@ -1260,7 +1264,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans26.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.2;
 				t26Live=day1-t26LiveS;
 				tst26=12000000;
 				tsc.tran.bTrans26.setText("Яхта 400млн Р 12млн Р/год "+ t26Live+" /9125дней(25 лет)");
@@ -1273,7 +1277,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans27.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.15;
 				t27Live=day1-t27LiveS;
 				tst27=50000000;
 				tsc.tran.bTrans27.setText("Самолет 1,5млрд Р 50млн Р/год "+ t27Live+" /9125дней(25 лет)");
@@ -1286,7 +1290,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans28.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.11;
 				t28Live=day1-t28LiveS;
 				tst28=500000000;
 				tsc.tran.bTrans28.setText("Буран 12млрд Р 500млн Р/год "+ t28Live+" /9125дней(25 лет)");
@@ -1299,7 +1303,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans29.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.98;
+				mtidy=0.05;
 				tst29=80000000;
 				
 				
@@ -1308,7 +1312,7 @@ public class Back extends JPanel implements ActionListener {
 				}
 			}
 			if(tsc.tran.bTrans30.getBackground()==Color.LIGHT_GRAY){
-				mtidy=0.05;
+				mtidy=0.01;
 				tst30=100000000;
 				
 				if(day>=365){
@@ -1661,12 +1665,28 @@ public class Back extends JPanel implements ActionListener {
 			canToCredit=100000;
 		}
 		
+		piInvestPrib=rand.nextInt(2513);
+		piInvestPrib=piInvestPrib/1000000;
+		if(PlusOrMinus%2!=0||PlusOrMinus==10||PlusOrMinus==20||PlusOrMinus==30
+				||PlusOrMinus==40||PlusOrMinus==48||PlusOrMinus==52||PlusOrMinus==68||PlusOrMinus==84
+			||PlusOrMinus==94||PlusOrMinus==16	){
+			piInvestPrib=piInvestPrib;
+			}else{piInvestPrib=piInvestPrib*-1;}
+		if(timeStart==true){
+		insc.pi.lDayPrib.setText("Прибыль за день = "+((piInvestPrib)*100)+"%");
+		insc.pi.lYaerPrib.setText("Прибыль за год (предположительно) = "+Math.round(((Math.pow((piInvestPrib+1), 365)-1)*100))+"%");
+		}
 		insc.ban.lmaxCredit.setText("Доступен кредит = "+canToCredit+"Р");
 		insc.ban.lMoneyInBank.setText("Сумма в банке = "+MoneyInBank);
+		
 		insc.ban.lKreditMoney.setText("Вы должны ещё выплатить "+MoneyToPay);
 		if(timeStart==true){
+			PlusOrMinus=rand.nextInt(100);
+			
 			bancMoney=bancMoney*1.00031054;
+			piMoney=(1+piInvestPrib)*piMoney;
 			MoneyInBank=(long)bancMoney;
+			
 		}
 		if(KreditMoney>0& day==365){
 			if(KreditTime>0){
@@ -1676,7 +1696,7 @@ public class Back extends JPanel implements ActionListener {
 			MoneyToPay=MoneyToPay-MoneyToPay/KreditTime;
 			allKreditMoney=(long) (allKreditMoney-MoneyToPay/KreditTime);
 		}
-		
+		insc.pi.lpiMoney.setText("На ПАММ счетах = "+(long)piMoney+"Р");
 		
 	}
 	public void Save (){
@@ -1708,10 +1728,10 @@ public class Back extends JPanel implements ActionListener {
 			day1++;
 			System.out.println(day1);
 			eat =(int) eat1;
-			eat1=eat1 - (2 + deat)*meat;
+			eat1=eat1 - (100 + deat)*meat;
 			tidy = (int)tidy1;
-			tidy1=tidy1 -( 1 + dtidy)*mtidy;
-			healthy = healthy - 1 - dhelth;;
+			tidy1=tidy1 -( 50 + dtidy)*mtidy;
+			healthy = healthy - 50 - dhelth;;
 			//health1=health1 - 1 - dhelth;
 			//BarFood.setValue((int)eat1);
 
@@ -1726,22 +1746,22 @@ public class Back extends JPanel implements ActionListener {
 			year++;
 
 		}
-		if (eat1 >= 200) {
-			eat = 200;
+		if (eat1 >= 10000) {
+			eat1 = 10000;
 		}
 		if (eat1 < 0) {
 			JOptionPane.showMessageDialog(null, "Yuo Deid");
 			System.exit(1);
 		}
-		if (tidy1 >= 200) {
-			tidy1 = 200;
+		if (tidy1 >= 10000) {
+			tidy1 = 10000;
 		}
-		if (tidy < 0) {
+		if (tidy1 < 0) {
 			JOptionPane.showMessageDialog(null, "Yuo Deid");
 			System.exit(1);
 		}
-		if (healthy >= 200) {
-			healthy = 200;
+		if (healthy >= 10000) {
+			healthy = 10000;
 		}
 		if (healthy < 0) {
 			JOptionPane.showMessageDialog(null, "Yuo Deid");
@@ -1753,9 +1773,9 @@ public class Back extends JPanel implements ActionListener {
 		}
 		if(day==365){
 			podarok=(long)(money*0.02+3500);
-			tidy1=tidy1+100;
-			eat1=eat1+100;
-			healthy=healthy+100;
+			tidy1=tidy1+5000;
+			eat1=eat1+5000;
+			healthy=healthy+5000;
 			money=money+podarok;
 			JOptionPane.showMessageDialog(null, "У вас день рождения \n"+"Вам подарок\n "+"Деньги "+podarok+
 					"\n"+"Здоровье +50% \n"+"Бодрость +50% \n"+"Еда +50%");
@@ -2126,7 +2146,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bFood1) {
 				cena = 50;
 				if (money - cena >= 0) {
-					eat1 = eat1 + 4;
+					eat1 = eat1 + 200;
 					money = money - cena;
 					eat =(int) eat1;
 					tidy = (int)tidy1;
@@ -2138,7 +2158,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bEnerge1) {
 				cena = 100;
 				if (money - cena >= 0) {
-					tidy1 = tidy1 + 4;
+					tidy1 = tidy1 + 200;
 					money = money - cena;
 					eat =(int) eat1;
 					tidy = (int)tidy1;
@@ -2149,7 +2169,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bHelth1) {
 				cena = 100;
 				if (money - cena >= 0) {
-					healthy = healthy + 4;
+					healthy = healthy + 200;
 					money = money - cena;
 					BarHealth.setValue(healthy);
 				}
@@ -2159,7 +2179,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bEnerge2) {
 				cena = 300;
 				if (money - cena >= 0) {
-					tidy1 = tidy1 + 8;
+					tidy1 = tidy1 + 400;
 					money = money - cena;
 					eat =(int) eat1;
 					tidy = (int)tidy1;
@@ -2171,7 +2191,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bEnerge3) {
 				cena = 1000;
 				if (money - cena >= 0) {
-					tidy1 = tidy1 + 15;
+					tidy1 = tidy1 + 750;
 					money = money - cena;
 					eat =(int) eat1;
 					tidy = (int)tidy1;
@@ -2189,7 +2209,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bEnerge4) {
 				cena = 2000;
 				if (money - cena >= 0) {
-					tidy1 = tidy1 + 25;
+					tidy1 = tidy1 + 1250;
 					money = money - cena;
 					eat =(int) eat1;
 					tidy = (int)tidy1;
@@ -2200,7 +2220,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bEnerge5) {
 				cena = 5000;
 				if (money - cena >= 0) {
-					tidy1 = tidy1 + 50;
+					tidy1 = tidy1 + 2500;
 					money = money - cena;
 					eat =(int) eat1;
 					tidy = (int)tidy1;
@@ -2211,7 +2231,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bEnerge6) {
 				cena = 10000;
 				if (money - cena >= 0) {
-					tidy1 = tidy1 + 75;
+					tidy1 = tidy1 + 3750;
 					money = money - cena;
 					BarTidy.setValue(tidy);
 					eat =(int) eat1;
@@ -2223,7 +2243,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bEnerge7) {
 				cena = 15000;
 				if (money - cena >= 0) {
-					tidy1 = tidy1 + 100;
+					tidy1 = tidy1 + 5000;
 					money = money - cena;
 					BarTidy.setValue(tidy);
 					eat =(int) eat1;
@@ -2235,7 +2255,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bEnerge8) {
 				cena = 35000;
 				if (money - cena >= 0) {
-					tidy1 = tidy1 + 125;
+					tidy1 = tidy1 + 6250;
 					money = money - cena;
 					BarTidy.setValue(tidy);
 					eat =(int) eat1;
@@ -2247,7 +2267,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bEnerge9) {
 				cena = 65000;
 				if (money - cena >= 0) {
-					tidy1 = tidy1 + 160;
+					tidy1 = tidy1 + 8000;
 					money = money - cena;
 					BarTidy.setValue(tidy);
 					eat =(int) eat1;
@@ -2259,7 +2279,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bEnerge10) {
 				cena = 150000;
 				if (money - cena >= 0) {
-					tidy1 = tidy1 + 200;
+					tidy1 = tidy1 + 10000;
 					money = money - cena;
 							eat =(int) eat1;
 					tidy = (int)tidy1;;
@@ -2270,7 +2290,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bHelth2) {
 				cena = 300;
 				if (money - cena >= 0) {
-					healthy = healthy + 4 + rand.nextInt(4);
+					healthy = healthy + 200 + rand.nextInt(200);
 					money = money - cena;
 					BarHealth.setValue(healthy);
 				}
@@ -2278,7 +2298,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bHelth3) {
 				cena = 1000;
 				if (money - cena >= 0) {
-					healthy = healthy + 15;
+					healthy = healthy + 750;
 					money = money - cena;
 					BarHealth.setValue(healthy);
 				}
@@ -2286,7 +2306,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bHelth4) {
 				cena = 2750;
 				if (money - cena >= 0) {
-					healthy = healthy + 20;
+					healthy = healthy + 1000;
 					money = money - cena;
 					BarHealth.setValue(healthy);
 				}
@@ -2294,7 +2314,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bHelth5) {
 				cena = 10000;
 				if (money - cena >= 0) {
-					healthy = healthy + 50;
+					healthy = healthy + 2500;
 					money = money - cena;
 					BarHealth.setValue(healthy);
 				}
@@ -2302,7 +2322,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bHelth6) {
 				cena = 15000;
 				if (money - cena >= 0) {
-					healthy = healthy + 65;
+					healthy = healthy + 3250;
 					money = money - cena;
 					BarHealth.setValue(healthy);
 				}
@@ -2310,7 +2330,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bHelth7) {
 				cena = 30000;
 				if (money - cena >= 0) {
-					healthy = healthy + 95;
+					healthy = healthy + 4750;
 					money = money - cena;
 					BarHealth.setValue(healthy);
 				}
@@ -2318,7 +2338,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bHelth8) {
 				cena = 50000;
 				if (money - cena >= 0) {
-					healthy = healthy +125 ;
+					healthy = healthy +6250 ;
 
 					money = money - cena;
 
@@ -2328,9 +2348,9 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bHelth9) {
 				cena = 90000;
 				if (money - cena >= 0) {
-					healthy = healthy + 160;
+					healthy = healthy + 8000;
 					money = money - cena;
-					tidy = tidy + 25;
+					tidy = tidy + 1250;
 					prestige = prestige + 80;
 					BarTidy.setValue(tidy);
 					BarHealth.setValue(healthy);
@@ -2339,8 +2359,8 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bHelth10) {
 				cena = 150000;
 				if (money - cena >= 0) {
-					healthy = healthy + 200;
-					tidy = tidy + 40;
+					healthy = healthy + 10000;
+					tidy = tidy + 2000;
 					prestige = prestige + 150;
 					BarTidy.setValue(tidy);
 					money = money - cena;
@@ -2350,7 +2370,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bFood2) {
 				cena = 100;
 				if (money - cena >= 0) {
-					eat1 = eat1+ 8;
+					eat1 = eat1+ 400;
 					money = money - cena;
 					eat =(int) eat1;
 					tidy = (int)tidy1;
@@ -2362,7 +2382,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bFood3) {
 				cena = 300;
 				if (money - cena >= 0) {
-					eat1 = eat1 + 15;
+					eat1 = eat1 + 750;
 					money = money - cena;
 					eat =(int) eat1;
 					tidy = (int)tidy1;
@@ -2373,7 +2393,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bFood4) {
 				cena = 1000;
 				if (money - cena >= 0) {
-					eat1 = eat1 + 30;
+					eat1 = eat1 + 1500;
 					money = money - cena;
 					eat =(int) eat1;
 					tidy = (int)tidy1;
@@ -2384,7 +2404,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bFood5) {
 				cena = 2000;
 				if (money - cena >= 0) {
-					eat1 = eat1 + 50;
+					eat1 = eat1 + 2500;
 					money = money - cena;
 					eat =(int) eat1;
 					tidy = (int)tidy1;
@@ -2395,7 +2415,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bFood6) {
 				cena = 3000;
 				if (money - cena >= 0) {
-					eat1 = eat1 + 65;
+					eat1 = eat1 + 3250;
 					money = money - cena;
 					eat =(int) eat1;
 					tidy = (int)tidy1;
@@ -2406,7 +2426,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bFood7) {
 				cena = 7500;
 				if (money - cena >= 0) {
-					eat1 = eat1 + 95;
+					eat1 = eat1 + 4750;
 					money = money - cena;
 					eat =(int) eat1;
 					tidy = (int)tidy1;
@@ -2417,7 +2437,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bFood8) {
 				cena = 15000;
 				if (money - cena >= 0) {
-					eat1 = eat1 + 125;
+					eat1 = eat1 + 6250;
 					money = money - cena;
 					eat =(int) eat1;
 					tidy = (int)tidy1;
@@ -2428,7 +2448,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bFood9) {
 				cena = 50000;
 				if (money - cena >= 0) {
-					eat1 = eat1 + 160;
+					eat1 = eat1 + 8000;
 					money = money - cena;
 					BarFood.setValue(eat);
 					eat =(int) eat1;
@@ -2440,7 +2460,7 @@ public class Back extends JPanel implements ActionListener {
 			if (e.getSource() == rmar.bFood10) {
 				cena = 300000;
 				if (money - cena >= 0) {
-					eat1 = eat1 + 200;
+					eat1 = eat1 + 10000;
 					money = money - cena;
 					BarFood.setValue(eat);
 					eat =(int) eat1;
@@ -3092,6 +3112,29 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 					insc.ban.lallKreditToPay.setText("Полная стоимость кредита = "+MoneyToPay);
 				}
 			}
+			if(e.getSource()==insc.pi.bBack){
+				insc.csInvpan.setViewportView(insc.inv);
+			}
+			if(e.getSource()==insc.inv.bInv2){
+				insc.csInvpan.setViewportView(insc.pi);
+			}
+			if(e.getSource()==insc.pi.bInvest){
+				piTakePutMoney=(long) insc.pi.pammMoney.getValue();
+				if(money-piTakePutMoney>=0){
+					money=money-piTakePutMoney;
+					piMoney=piMoney+piTakePutMoney;
+					insc.pi.lpiMoney.setText("На ПАММ счетах = "+(long)piTakePutMoney+"Р");
+				}
+			}
+			if(e.getSource()==insc.pi.bTakeMoney){
+				piTakePutMoney=(long) insc.pi.pammMoney.getValue();
+				if((long)piMoney-piTakePutMoney>=0){
+					money=money+piTakePutMoney;
+					piMoney=piMoney-piTakePutMoney;
+					insc.pi.lpiMoney.setText("На ПАММ счетах = "+(long)piTakePutMoney+"Р");
+				}
+			}
+
 			
 		}
 		
