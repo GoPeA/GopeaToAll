@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.Serializable;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -14,7 +15,8 @@ import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 
-public class ResourseMarket extends JPanel {
+public class ResourseMarket extends JPanel implements Serializable {
+	static final long serialVersionUID=22L;
 	Mouse m = new Mouse();
 	JButton bFood1 = new JButton("\u0411\u0443\u0442\u0435\u0440\u0431\u0440\u043E\u0434\u044B +2%F  50\u0420");
 	JButton bEnerge1 = new JButton("\u041F\u043E\u0433\u0443\u043B\u044F\u0442\u044C \u0441 \u0434\u0440\u0443\u0437\u044C\u044F\u043C\u0438 +2%\u263A 100\u0420");

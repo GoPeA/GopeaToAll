@@ -1,5 +1,7 @@
 package game;
 
+import java.io.Serializable;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JProgressBar;
@@ -7,7 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
-public class LernPScrol extends JPanel {
+public class LernPScrol extends JPanel implements Serializable{
+	static final long serialVersionUID=19L;
 	LerningPane lp=new LerningPane();
 	JScrollPane scrollPane = new JScrollPane();
 	

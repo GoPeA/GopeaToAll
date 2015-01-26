@@ -1,12 +1,16 @@
 package game;
 
+import java.io.Serializable;
+
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
-public class PammInvest extends JPanel {
+public class PammInvest extends JPanel implements Serializable{
+
+	static final long serialVersionUID=21L;
 	JButton bBack = new JButton("\u041D\u0430\u0437\u0430\u0434");
 	JButton bInvest = new JButton("\u0418\u043D\u0432\u0435\u0441\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C");
 	JButton bTakeMoney = new JButton("\u0417\u0430\u0431\u0440\u0430\u0442\u044C");

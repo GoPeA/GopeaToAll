@@ -1,9 +1,12 @@
 package game;
 
+import java.io.Serializable;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class BisnessSC extends JPanel {
+public class BisnessSC extends JPanel implements Serializable {
+	static final long serialVersionUID=5L;
 	Shop shop=new Shop();
 	JScrollPane spBisness = new JScrollPane();
 	Bisness bisn=new Bisness();

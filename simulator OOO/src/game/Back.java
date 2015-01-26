@@ -28,9 +28,11 @@ import javax.swing.UIManager;
 
 import java.awt.Font;
 import java.io.IOException;
+import java.io.Serializable;
 
 
-public class Back extends JPanel implements ActionListener {
+public class Back extends JPanel implements Serializable {
+	static final long serialVersionUID=2L;
 	long canToCredit=100000,minMoney=1000;
 	long piTakePutMoney,PlusOrMinus;
 	double piMoney,piInvestPrib;
@@ -66,6 +68,11 @@ public class Back extends JPanel implements ActionListener {
 	HauseSC hsc=new HauseSC();
 	int x,y;
 	long y1,y2;
+	boolean tr1,tr2,tr3,tr4,tr5,tr6,tr7,tr8,tr9,tr10,tr11,tr12,tr13,tr14,tr15
+	,tr16,tr17,tr18,tr19,tr20,tr21,tr22,tr23,tr24,tr25,tr26,tr27,tr28,tr29,tr30;
+	boolean hau1,hau2,hau3,hau4,hau5,hau6,hau7,hau8,hau9,hau10,hau11,hau12,hau13,hau14
+	,hau15,hau16,hau17,hau18,hau19,hau20,hau21,hau22,hau23,hau24,hau25;
+	boolean dlb1,dlb2,dlb3;
 	InvescSC insc= new InvescSC();
 	BisnessSC bsc=new BisnessSC();
 	HouseAction ha=new HouseAction();
@@ -101,8 +108,8 @@ public class Back extends JPanel implements ActionListener {
 	long money =500000000L;
 	
 	Random rand = new Random();
-	Timer time1 = new Timer(1000, this);
-	Timer time2 = new Timer(1000, this);
+	//Timer time1 = new Timer(1000, this);
+	//Timer time2 = new Timer(1000, this);
 	boolean timeStart = false, timeStop = false, timeFast = false;
 	eHandler eh = new eHandler();
 	String s1, s2, s3, s4, s5, s6, s7, s8, s9;
@@ -315,9 +322,9 @@ public class Back extends JPanel implements ActionListener {
 		lDays.setText("");
 		s2 = "Деньги  Р " + money;
 		lMoney1.setText(s2);
-		bStartTime.addActionListener(this);
-		bFastTime.addActionListener(this);
-		bStopTime.addActionListener(this);
+		//bStartTime.addActionListener(this);
+		//bFastTime.addActionListener(this);
+		//bStopTime.addActionListener(this);
 		
 		wp.wpan.bPromouter.addActionListener(aw);
 		wp.wpan.bAdmin.addActionListener(aw);
@@ -494,7 +501,7 @@ public class Back extends JPanel implements ActionListener {
 	
 
 	public void daycount2() throws IOException{
-		time2.start();
+		//time2.start();
 		if (timeFast == true) {
 			day++;
 			System.out.println(day);
@@ -677,6 +684,9 @@ public class Back extends JPanel implements ActionListener {
 		}
 		if (KoledSles == true & year >= 18) {
 			wp.wpan.bWorkerZavod.setEnabled(true);
+			if(xp>=1800&prestige>=500){
+				wp.wpan.bBossZeh.setEnabled(true);
+			}
 		}
 		if (KoledSanteh == true & year >= 18) {
 			wp.wpan.bSanteh.setEnabled(true);
@@ -686,27 +696,61 @@ public class Back extends JPanel implements ActionListener {
 		}
 		if (InginerUniv == true & year >= 18) {
 			wp.wpan.bInginer.setEnabled(true);
+			if(xp>=1500&prestige>=1000){
+				wp.wpan.bBossInginerProj.setEnabled(true);
+			}
 		}
 		if (PoliceUniv == true & year >= 18) {
 			wp.wpan.bPoliceman.setEnabled(true);
 			wp.wpan.bUrist.setEnabled(true);
+			if(prestige>=800&xp>=1600){
+				wp.wpan.bBossPolice.setEnabled(true);
+			}
 		}
 		if (DocUniv == true & year >= 18) {
 			wp.wpan.bDoc.setEnabled(true);
+			if(xp>=1800&prestige>=1000){
+				wp.wpan.bBossDoc.setEnabled(true);
+			}
 		}
 		if (ITPUniv == true & year >= 18) {
 			wp.wpan.bProgrammer.setEnabled(true);
 			wp.wpan.bITSpec.setEnabled(true);
+			if(xp>=1600&prestige>=1100){
+				wp.wpan.bBossIT.setEnabled(true);
+			}
 		}
 		if (ITSpecUniv == true & year >= 18) {
 			wp.wpan.bITSpec.setEnabled(true);
+			if(xp>=6500&prestige>=1100){
+				wp.wpan.bBossIT.setEnabled(true);
+			}
 		}
 		if (MenegerUniv == true & year >= 18) {
 			wp.wpan.bMeneger.setEnabled(true);
+			if(xp>=1800&prestige>=1250){
+				wp.wpan.bBossGov.setEnabled(true);
+			}
 		}
 		if (UristUniv == true & year >= 18) {
 			wp.wpan.bUrist.setEnabled(true);
 			wp.wpan.bPoliceman.setEnabled(true);
+			if(prestige>=800&xp>=1600){
+				wp.wpan.bBossPolice.setEnabled(true);
+			}
+		}
+		if(year>=18){
+			if(InginerUniv==true||PoliceUniv==true||DocUniv==true||ITPUniv==true||ITSpecUniv==true||UristUniv==true||MenegerUniv==true&(HighScholl==true)){
+				if(xp>=4500&prestige>=3000){
+					wp.wpan.bBossOtdel.setEnabled(true);
+				}
+				if(xp>=6000&prestige>=4250){
+					wp.wpan.bZamBoss.setEnabled(true);
+				}
+				if(xp>=8000&prestige>=7000){
+					wp.wpan.bBoss.setEnabled(true);
+				}
+			}
 		}
 		
 		s2 = "Деньги  Р " + money;
@@ -741,63 +785,63 @@ public class Back extends JPanel implements ActionListener {
 			if (wp.wpan.bAdmin.getBackground() == Color.GREEN) {
 				dhelth = rand.nextInt(50);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy = rand.nextInt(100);
+				xp=xp+2;
 				
 			}
 			if (wp.wpan.bBoss.getBackground() == Color.GREEN) {
 				dhelth = rand.nextInt(50);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy = 50+rand.nextInt(100);
+				xp=xp+7;
 				
 			}
 			if (wp.wpan.bBossDoc.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(50);
+				dhelth = rand.nextInt(100);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy =50+ rand.nextInt(100);
+				xp=xp+4;
 				
 			}
 			if (wp.wpan.bBossGov.getBackground() == Color.GREEN) {
 				dhelth = rand.nextInt(50);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy =50+ rand.nextInt(100);
+				xp=xp+4;
 				
 			}
 			if (wp.wpan.bBossInginerProj.getBackground() == Color.GREEN) {
 				dhelth = rand.nextInt(50);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy = 50+rand.nextInt(100);
+				xp=xp+4;
 				
 			}
 			if (wp.wpan.bBossIT.getBackground() == Color.GREEN) {
 				dhelth = rand.nextInt(50);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy = rand.nextInt(150);
+				xp=xp+4;
 			}
 			if (wp.wpan.bBossOtdel.getBackground() == Color.GREEN) {
 				dhelth = rand.nextInt(50);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy =50+ rand.nextInt(100);
+				xp=xp+5;
 				
 			}
 			if (wp.wpan.bBossPolice.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(50);
+				dhelth = rand.nextInt(150);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy =50+ rand.nextInt(100);
+				xp=xp+4;
 				
 			}
 			if (wp.wpan.bBossZeh.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(50);
+				dhelth = rand.nextInt(100);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy =50+ rand.nextInt(100);
+				xp=xp+4;
 				
 			}
 			if (wp.wpan.bCliner.getBackground() == Color.GREEN) {
@@ -816,122 +860,122 @@ public class Back extends JPanel implements ActionListener {
 				
 			}
 			if (wp.wpan.bDoc.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(50);
+				dhelth = rand.nextInt(100);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy =50+ rand.nextInt(100);
+				xp=xp+3;
 				
 
 			}
 			if (wp.wpan.bDriverB.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(50);
+				dhelth = rand.nextInt(150);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy =100+ rand.nextInt(100);
+				xp=xp+2;
 				
 			}
 			if (wp.wpan.bDriverC.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(50);
+				dhelth =50+ rand.nextInt(150);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy =100+ rand.nextInt(150);
+				xp=xp+2;
 				
 			}
 			if (wp.wpan.bDriverD.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(50);
+				dhelth =50+ rand.nextInt(150);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy =100+ rand.nextInt(150);
+				xp=xp+2;
 				
 			}
 			if (wp.wpan.bElek.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(50);
+				dhelth =50+ rand.nextInt(50);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy =50+ rand.nextInt(100);
+				xp=xp+2;
 				
 			}
 			if (wp.wpan.bInginer.getBackground() == Color.GREEN) {
 				dhelth = rand.nextInt(50);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy = 50+rand.nextInt(50);
+				xp=xp+3;
 				
 			}
 			if (wp.wpan.bITSpec.getBackground() == Color.GREEN) {
 				dhelth = rand.nextInt(50);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy = rand.nextInt(150);
+				xp=xp+3;
 				
 			}
 			if (wp.wpan.bMeneger.getBackground() == Color.GREEN) {
 				dhelth = rand.nextInt(50);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy = rand.nextInt(150);
+				xp=xp+3;
 				
 			}
 			if (wp.wpan.bPoliceman.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(50);
+				dhelth =50+ rand.nextInt(100);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy =50 +rand.nextInt(150);
+				xp=xp+3;
 				
 			}
 			if (wp.wpan.bProgrammer.getBackground() == Color.GREEN) {
 				dhelth = rand.nextInt(50);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy = rand.nextInt(100);
+				xp=xp+3;
 				
 			}
 			if (wp.wpan.bSaler.getBackground() == Color.GREEN) {
 				dhelth = rand.nextInt(50);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
+				dtidy = 50+rand.nextInt(100);
 				xp++;
 			}
 			if (wp.wpan.bSanitar.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(50);
+				dhelth = rand.nextInt(100);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
+				dtidy = 50+rand.nextInt(100);
 				xp++;
 			
 			}
 			if (wp.wpan.bSanteh.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(50);
+				dhelth = 50+rand.nextInt(50);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy =50+ rand.nextInt(100);
+				xp=xp+2;
 				
 			}
 			if (wp.wpan.bSekretar.getBackground() == Color.GREEN) {
 				dhelth = rand.nextInt(50);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
+				dtidy = rand.nextInt(100);
 				xp++;
 				
 			}
 			if (wp.wpan.bUrist.getBackground() == Color.GREEN) {
 				dhelth = rand.nextInt(50);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy = 50+rand.nextInt(100);
+				xp=xp+3;
 				
 			}
 			if (wp.wpan.bWorkerZavod.getBackground() == Color.GREEN) {
-				dhelth = rand.nextInt(50);
-				deat = rand.nextInt(150);
+				dhelth =50+ rand.nextInt(50);
+				deat = 50+rand.nextInt(100);
 				dtidy = rand.nextInt(50);
-				xp++;
+				xp=xp+2;
 				
 			}
 			if (wp.wpan.bZamBoss.getBackground() == Color.GREEN) {
 				dhelth = rand.nextInt(50);
 				deat = rand.nextInt(150);
-				dtidy = rand.nextInt(50);
-				xp++;
+				dtidy =50+rand.nextInt(100);
+				xp=xp+6;
 				
 			}
 		}
@@ -946,6 +990,7 @@ public class Back extends JPanel implements ActionListener {
 				if(t1Live>=1825){
 					tsc.tran.bTrans1.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans1.setText("Самокат 2'500Р 0Р/год  0 /1825дней(5 лет)");
+					tr1=false;
 				}
 				if(day>=1825){
 					money=money-0;
@@ -958,6 +1003,7 @@ public class Back extends JPanel implements ActionListener {
 				tsc.tran.bTrans2.setText("Велосипед 7'500Р 500Р/год "+ t2Live+" /1825дней(5 лет)");
 				if(t2Live>=1825){
 					tsc.tran.bTrans2.setBackground(bStartTime.getBackground());
+					tr2=false;
 					tsc.tran.bTrans2.setText("Велосипед 7'500Р 500/год  0 /1825дней(5 лет)");
 				}
 				if(day>=365){
@@ -970,6 +1016,7 @@ public class Back extends JPanel implements ActionListener {
 				tst3=4500;
 				tsc.tran.bTrans3.setText("Мопед 15'000Р 4'500Р/год "+ t3Live+" /1825дней(5 лет)");
 				if(t3Live>=1825){
+					tr3=false;
 					tsc.tran.bTrans3.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans3.setText("Мопед 15'000Р 4'500Р/год  0 /1825дней(5 лет)");
 				}
@@ -983,6 +1030,7 @@ public class Back extends JPanel implements ActionListener {
 				tst4=+7500;
 				tsc.tran.bTrans4.setText("Скутер 35'000Р 7'500Р/год "+ t4Live+" /1825дней(5 лет)");
 				if(t4Live>=1825){
+					tr4=false;
 					tsc.tran.bTrans4.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans4.setText("Самокат 35'000Р 7'500Р/год  0 /1825дней(5 лет)");
 				}
@@ -996,6 +1044,7 @@ public class Back extends JPanel implements ActionListener {
 				tst5=12500;
 				tsc.tran.bTrans1.setText("Мотоцикл 70'000Р 12'500Р/год "+ t5Live+" /1825дней(5 лет)");
 				if(t5Live>=1825){
+					tr5=false;
 					tsc.tran.bTrans5.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans5.setText("Мотоцикл 70'000Р 12'500Р/год  0 /1825дней(5 лет)");
 				}
@@ -1009,6 +1058,7 @@ public class Back extends JPanel implements ActionListener {
 				tst6=+15000;
 				tsc.tran.bTrans6.setText("ВАЗ 2114 150'000Р 15'000Р/год "+ t6Live+" /2555дней(7 лет) + бензин");
 				if(t6Live>=2555){
+					tr6=false;
 					tsc.tran.bTrans6.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans6.setText("ВАЗ 2114 150'000Р 15'000Р/год  0 /2555дней(7 лет) + бензин");
 				}
@@ -1022,6 +1072,7 @@ public class Back extends JPanel implements ActionListener {
 				tst7=+20000;
 				tsc.tran.bTrans7.setText("Lada 110 200'000Р 20'000Р/год "+ t7Live+" /2737дней(7,5 лет) + бензин");
 				if(t7Live>=2737){
+					tr7=false;
 					tsc.tran.bTrans7.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans7.setText("Lada 110 200'000Р 20'000Р/год  0 /2737дней(7,5 лет) + бензин");
 				}
@@ -1035,6 +1086,7 @@ public class Back extends JPanel implements ActionListener {
 				tst8=20500;
 				tsc.tran.bTrans8.setText("Lada Kalina 350'000Р 20'500Р/год "+ t8Live+" /2737дней(7,5 лет) + бензин");
 				if(t8Live>=2737){
+					tr8=false;
 					tsc.tran.bTrans8.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans8.setText("Lada Kalina 350'000Р 20'500Р/год  0 /2737дней(7,5 лет) + бензин");
 				}
@@ -1048,6 +1100,7 @@ public class Back extends JPanel implements ActionListener {
 				tst9=22000;
 				tsc.tran.bTrans9.setText("Daewoo Nexia 420'000Р 22'000Р/год "+ t9Live+" /2737дней(7,5 лет) + бензин");
 				if(t9Live>=2737){
+					tr9=false;
 					tsc.tran.bTrans9.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans9.setText("Daewoo Nexia 420'000Р 22'000Р/год  0 /2737дней(7,5 лет) + бензин");
 				}
@@ -1061,6 +1114,7 @@ public class Back extends JPanel implements ActionListener {
 				tst10=25000;
 				tsc.tran.bTrans10.setText("Lada Largus 570'000Р 25'000Р/год "+ t10Live+" /2737дней(7,5 лет) + бензин");
 				if(t10Live>=2737){
+					tr10=false;
 					tsc.tran.bTrans10.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans10.setText("Lada Largus 570'000Р 25'000Р/год  0 /2737дней(7,5 лет) + бензин");
 				}
@@ -1074,6 +1128,7 @@ public class Back extends JPanel implements ActionListener {
 				tst11=25000;
 				tsc.tran.bTrans11.setText("Renault Logan 650'000Р 25'000Р/год "+ t11Live+" /2920дней(8 лет) + бензин");
 				if(t11Live>=2920){
+					tr11=false;
 					tsc.tran.bTrans11.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans11.setText("Renault Logan 650'000Р 25'000Р/год  0 /2920дней(8 лет) + бензин");
 				}
@@ -1087,6 +1142,7 @@ public class Back extends JPanel implements ActionListener {
 				tst12=28000;
 				tsc.tran.bTrans12.setText("УАЗ Патриот 800'000Р 28'000Р/год "+ t12Live+" /2920дней(8 лет) + бензин");
 				if(t12Live>=2920){
+					tr12=false;
 					tsc.tran.bTrans12.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans12.setText("УАЗ Патриот 800'000Р 28'000Р/год  0 /2920дней(8 лет) + бензин");
 				}
@@ -1100,6 +1156,7 @@ public class Back extends JPanel implements ActionListener {
 				tst13=35000;
 				tsc.tran.bTrans13.setText("Ford FocusIII 1'000'000Р 35'000Р/год "+ t13Live+" / 2920дней(8 лет) + бензин");
 				if(t13Live>=2920){
+					tr13=false;
 					tsc.tran.bTrans13.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans13.setText("Ford FocusIII 1'000'000Р 35'000Р/год  0 / 2920дней(8 лет) + бензин");
 				}
@@ -1113,6 +1170,7 @@ public class Back extends JPanel implements ActionListener {
 				tst14=40000;
 				tsc.tran.bTrans14.setText("Ssang Yong Action 1'500'000Р 40'000Р/год "+ t14Live+" /2920дней(8 лет) + бензин");
 				if(t14Live>=2920){
+					tr14=false;
 					tsc.tran.bTrans14.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans14.setText("СSsang Yong Action 1'500'000Р 40'000Р/год  0 /2920дней(8 лет) + бензин");
 				}
@@ -1126,6 +1184,7 @@ public class Back extends JPanel implements ActionListener {
 				tst15=50000;
 				tsc.tran.bTrans15.setText("VolksWagen Touareg 1'800'000Р 50'000Р/год "+ t15Live+" /3285дней(9 лет) + бензин");
 				if(t15Live>=3285){
+					tr15=false;
 					tsc.tran.bTrans15.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans15.setText("VolksWagen Touareg 1'800'000Р 50'000Р/год  0 /3285дней(9 лет) + бензин");
 				}
@@ -1139,6 +1198,7 @@ public class Back extends JPanel implements ActionListener {
 				tst16=80000;
 				tsc.tran.bTrans16.setText("Mersedes-Benz 2'500'000Р 80'000Р/год "+ t16Live+" /3650дней(10 лет) + бензин");
 				if(t16Live>=3650){
+					tr16=false;
 					tsc.tran.bTrans16.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans16.setText("Mersedes-Benz 2'500'000Р 80'000Р/год  0 /3650дней(10 лет) + бензин");
 				}
@@ -1152,6 +1212,7 @@ public class Back extends JPanel implements ActionListener {
 				tst17=100000;
 				tsc.tran.bTrans17.setText("BMW X6 4'000'000Р 100'000Р/год "+ t17Live+" /3650дней(5 лет) + бензин");
 				if(t17Live>=3650){
+					tr17=false;
 					tsc.tran.bTrans17.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans17.setText("BMW X6 4'000'000Р 100'000Р/год  0 /3650дней(10 лет) + бензин");
 				}
@@ -1165,6 +1226,7 @@ public class Back extends JPanel implements ActionListener {
 				tst18=100000;
 				tsc.tran.bTrans18.setText("Audi 4'000'000Р 100'000Р/год "+ t18Live+" /3650дней(10 лет) + бензин");
 				if(t18Live>=3650){
+					tr18=false;
 					tsc.tran.bTrans18.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans18.setText("Audi 4'000'000Р 100'000Р/год  0 /3650дней(10 лет) + бензин");
 				}
@@ -1178,6 +1240,7 @@ public class Back extends JPanel implements ActionListener {
 				tst19=200000;
 				tsc.tran.bTrans19.setText("Lexus 5'500'000Р 200'000Р/год "+ t19Live+" /4015дней(11 лет) + бензин");
 				if(t19Live>=4015){
+					tr19=false;
 					tsc.tran.bTrans19.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans19.setText("Lexus 5'500'000Р 200'000Р/год  0 /4015дней(11 лет) + бензин");
 				}
@@ -1191,6 +1254,7 @@ public class Back extends JPanel implements ActionListener {
 				tst20=175000;
 				tsc.tran.bTrans20.setText("Porshe 7'500'000Р 175'000Р/год "+ t20Live+" /4015дней(11 лет) + бензин");
 				if(t20Live>=4015){
+					tr20=false;
 					tsc.tran.bTrans20.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans20.setText("Porshe 7'500'000Р 175'000Р/год  0 /4015дней(11 лет) + бензин");
 				}
@@ -1204,6 +1268,7 @@ public class Back extends JPanel implements ActionListener {
 				tst21=250000;
 				tsc.tran.bTrans21.setText("Ferari 12'000'000Р 250'000Р/год "+ t21Live+" /4015дней(11 лет) + бензин");
 				if(t21Live>=4015){
+					tr21=false;
 					tsc.tran.bTrans21.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans21.setText("Ferari 12'000'000Р 250'000Р/год  0 /4015дней(11 лет) + бензин");
 				}
@@ -1217,6 +1282,7 @@ public class Back extends JPanel implements ActionListener {
 				tst22=300000;
 				tsc.tran.bTrans22.setText("Lamborgini 18млнР 300'000Р/год "+ t22Live+" /4015дней(11 лет) + бензин");
 				if(t22Live>=4015){
+					tr22=false;
 					tsc.tran.bTrans22.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans22.setText("Lamborgini 18млнР 300'000Р/год  0 /4015дней(11 лет) + бензин");
 				}
@@ -1230,6 +1296,7 @@ public class Back extends JPanel implements ActionListener {
 				tst23=350000;
 				tsc.tran.bTrans23.setText("Bentli 25млн Р 350'000Р/год "+ t23Live+" /4015дней(11 лет)+ бензин");
 				if(t23Live>=4015){
+					tr23=false;
 					tsc.tran.bTrans23.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans23.setText("Bentli 25млн Р 350'000Р/год  0 /4015дней(11 лет)+ бензин");
 				}
@@ -1243,6 +1310,7 @@ public class Back extends JPanel implements ActionListener {
 				tst24=2000000;
 				tsc.tran.bTrans24.setText("Вертолет 50млн Р 2млн Р/год "+ t24Live+" /7300дней(20 лет)");
 				if(t24Live>=7300){
+					tr24=false;
 					tsc.tran.bTrans24.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans24.setText("Вертолет 50млн Р 2млн Р/год  0 /7300дней(20 лет)");
 				}
@@ -1256,6 +1324,7 @@ public class Back extends JPanel implements ActionListener {
 				tst25=3000000;
 				tsc.tran.bTrans25.setText("Bugatti 130млн Р 3млн /год "+ t25Live+" /5475дней(15 лет)");
 				if(t25Live>=5475){
+					tr25=false;
 					tsc.tran.bTrans25.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans25.setText("Bugatti 130млн Р 3млн Р/год  0 /5475дней(15 лет)");
 				}
@@ -1269,6 +1338,7 @@ public class Back extends JPanel implements ActionListener {
 				tst26=12000000;
 				tsc.tran.bTrans26.setText("Яхта 400млн Р 12млн Р/год "+ t26Live+" /9125дней(25 лет)");
 				if(t26Live>=9125){
+					tr26=false;
 					tsc.tran.bTrans26.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans26.setText("Яхта 400млн Р 12млн Р/год  0 /9125дней(25 лет)");
 				}
@@ -1282,6 +1352,7 @@ public class Back extends JPanel implements ActionListener {
 				tst27=50000000;
 				tsc.tran.bTrans27.setText("Самолет 1,5млрд Р 50млн Р/год "+ t27Live+" /9125дней(25 лет)");
 				if(t27Live>=9125){
+					tr27=false;
 					tsc.tran.bTrans27.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans27.setText("Самолет 1,5млрд Р 50млн Р/год  0 /9125дней(25 лет)");
 				}
@@ -1295,6 +1366,7 @@ public class Back extends JPanel implements ActionListener {
 				tst28=500000000;
 				tsc.tran.bTrans28.setText("Буран 12млрд Р 500млн Р/год "+ t28Live+" /9125дней(25 лет)");
 				if(t28Live>=9125){
+					tr28=false;
 					tsc.tran.bTrans28.setBackground(bStartTime.getBackground());
 					tsc.tran.bTrans28.setText("Буран 12млрд Р 500млн Р/год  0 /9125дней(25 лет)");
 				}
@@ -1304,6 +1376,7 @@ public class Back extends JPanel implements ActionListener {
 			}
 			if(tsc.tran.bTrans29.getBackground()==Color.LIGHT_GRAY){
 				mtidy=0.05;
+				
 				tst29=80000000;
 				
 				
@@ -1548,6 +1621,7 @@ public class Back extends JPanel implements ActionListener {
 			dlsc.dl.bDL1.setText("Авто школа на права категори  B "+x+"/ 180 дней");
 			if(day1-daydLS1>=daydLtoL1){
 				dlsc.dl.bDL1.setBackground(Color.pink);
+				dlb1=true;
 			}
 		}
 		if(dlsc.dl.bDL2.getBackground()==Color.yellow){
@@ -1556,6 +1630,7 @@ public class Back extends JPanel implements ActionListener {
 			dlsc.dl.bDL2.setText("Авто школа на права категори  C "+x+"/ 180 дней");
 			if(day1-daydLS2>=daydLtoL2){
 				dlsc.dl.bDL2.setBackground(Color.pink);
+				dlb2=true;
 			}
 		}
 		if(dlsc.dl.bDL3.getBackground()==Color.yellow){
@@ -1564,6 +1639,7 @@ public class Back extends JPanel implements ActionListener {
 			dlsc.dl.bDL3.setText("Авто школа на права категори  B "+x+"/ 180 дней");
 			if(day1-daydLS3>=daydLtoL3){
 				dlsc.dl.bDL3.setBackground(Color.pink);
+				dlb3=true;
 			}
 		}
 	}
@@ -1700,7 +1776,176 @@ public class Back extends JPanel implements ActionListener {
 		
 	}
 	public void Save (){
-		//SerializationManager.serializeData(this, "Back", "ser", "");
+		if(dlb1==true){
+			dlsc.dl.bDL1.setBackground(Color.pink);
+		}
+		if(dlb2==true){
+			dlsc.dl.bDL2.setBackground(Color.pink);
+		}
+		if(dlb3==true){
+			dlsc.dl.bDL3.setBackground(Color.pink);
+		}
+		if(tr1==true){
+			tsc.tran.bTrans1.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans1.setBackground(bStartTime.getBackground());}
+		if(tr2==true){
+			tsc.tran.bTrans2.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans2.setBackground(bStartTime.getBackground());}
+		if(tr3==true){
+			tsc.tran.bTrans3.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans3.setBackground(bStartTime.getBackground());}
+		if(tr4==true){
+			tsc.tran.bTrans4.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans4.setBackground(bStartTime.getBackground());}
+		if(tr5==true){
+			tsc.tran.bTrans5.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans5.setBackground(bStartTime.getBackground());}
+		if(tr6==true){
+			tsc.tran.bTrans6.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans6.setBackground(bStartTime.getBackground());}
+		if(tr7==true){
+			tsc.tran.bTrans7.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans7.setBackground(bStartTime.getBackground());}
+		if(tr8==true){
+			tsc.tran.bTrans8.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans8.setBackground(bStartTime.getBackground());}
+		if(tr9==true){
+			tsc.tran.bTrans9.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans9.setBackground(bStartTime.getBackground());}
+		if(tr10==true){
+			tsc.tran.bTrans10.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans10.setBackground(bStartTime.getBackground());}
+		if(tr11==true){
+			tsc.tran.bTrans11.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans11.setBackground(bStartTime.getBackground());}
+		if(tr12==true){
+			tsc.tran.bTrans12.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans12.setBackground(bStartTime.getBackground());}
+		if(tr13==true){
+			tsc.tran.bTrans13.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans13.setBackground(bStartTime.getBackground());}
+		if(tr14==true){
+			tsc.tran.bTrans14.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans14.setBackground(bStartTime.getBackground());}
+		if(tr15==true){
+			tsc.tran.bTrans15.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans15.setBackground(bStartTime.getBackground());}
+		if(tr16==true){
+			tsc.tran.bTrans16.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans16.setBackground(bStartTime.getBackground());}
+		if(tr17==true){
+			tsc.tran.bTrans17.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans17.setBackground(bStartTime.getBackground());}
+		if(tr18==true){
+			tsc.tran.bTrans18.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans18.setBackground(bStartTime.getBackground());}
+		if(tr19==true){
+			tsc.tran.bTrans19.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans19.setBackground(bStartTime.getBackground());}
+		if(tr20==true){
+			tsc.tran.bTrans20.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans20.setBackground(bStartTime.getBackground());}
+		if(tr21==true){
+			tsc.tran.bTrans21.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans21.setBackground(bStartTime.getBackground());}
+		if(tr22==true){
+			tsc.tran.bTrans22.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans22.setBackground(bStartTime.getBackground());}
+		if(tr23==true){
+			tsc.tran.bTrans23.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans23.setBackground(bStartTime.getBackground());}
+		if(tr24==true){
+			tsc.tran.bTrans24.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans24.setBackground(bStartTime.getBackground());}
+		if(tr25==true){
+			tsc.tran.bTrans25.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans25.setBackground(bStartTime.getBackground());}
+		if(tr26==true){
+			tsc.tran.bTrans26.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans26.setBackground(bStartTime.getBackground());}
+		if(tr27==true){
+			tsc.tran.bTrans27.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans27.setBackground(bStartTime.getBackground());}
+		if(tr28==true){
+			tsc.tran.bTrans28.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans28.setBackground(bStartTime.getBackground());}
+		if(tr29==true){
+			tsc.tran.bTrans29.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans29.setBackground(bStartTime.getBackground());}
+		if(tr30==true){
+			tsc.tran.bTrans30.setBackground(Color.LIGHT_GRAY);
+		}else{tsc.tran.bTrans30.setBackground(bStartTime.getBackground());}
+		
+		if(hau3==true){
+			hsc.hause.bHause3.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause3.setBackground(bStartTime.getBackground());}
+		if(hau4==true){
+			hsc.hause.bHause4.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause4.setBackground(bStartTime.getBackground());}
+		if(hau5==true){
+			hsc.hause.bHause5.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause5.setBackground(bStartTime.getBackground());}
+		if(hau6==true){
+			hsc.hause.bHause6.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause6.setBackground(bStartTime.getBackground());}
+		if(hau7==true){
+			hsc.hause.bHause7.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause7.setBackground(bStartTime.getBackground());}
+		if(hau8==true){
+			hsc.hause.bHause8.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause8.setBackground(bStartTime.getBackground());}
+		if(hau9==true){
+			hsc.hause.bHause9.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause9.setBackground(bStartTime.getBackground());}
+		if(hau10==true){
+			hsc.hause.bHause10.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause10.setBackground(bStartTime.getBackground());}
+		if(hau11==true){
+			hsc.hause.bHause11.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause11.setBackground(bStartTime.getBackground());}
+		if(hau12==true){
+			hsc.hause.bHause12.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause12.setBackground(bStartTime.getBackground());}
+		if(hau13==true){
+			hsc.hause.bHause13.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause13.setBackground(bStartTime.getBackground());}
+		if(hau14==true){
+			hsc.hause.bHause14.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause14.setBackground(bStartTime.getBackground());}
+		if(hau15==true){
+			hsc.hause.bHause15.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause15.setBackground(bStartTime.getBackground());}
+		if(hau16==true){
+			hsc.hause.bHause16.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause16.setBackground(bStartTime.getBackground());}
+		if(hau17==true){
+			hsc.hause.bHause17.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause17.setBackground(bStartTime.getBackground());}
+		if(hau18==true){
+			hsc.hause.bHause18.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause18.setBackground(bStartTime.getBackground());}
+		if(hau19==true){
+			hsc.hause.bHause19.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause19.setBackground(bStartTime.getBackground());}
+		if(hau20==true){
+			hsc.hause.bHause20.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause20.setBackground(bStartTime.getBackground());}
+		if(hau21==true){
+			hsc.hause.bHause21.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause21.setBackground(bStartTime.getBackground());}
+		if(hau22==true){
+			hsc.hause.bHause22.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause22.setBackground(bStartTime.getBackground());}
+		if(hau23==true){
+			hsc.hause.bHause23.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause23.setBackground(bStartTime.getBackground());}
+		if(hau24==true){
+			hsc.hause.bHause24.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause24.setBackground(bStartTime.getBackground());}
+		
+		if(hau25==true){
+			hsc.hause.bHause25.setBackground(Color.YELLOW);
+		}else{hsc.hause.bHause25.setBackground(bStartTime.getBackground());}
 	}
 	
 	public void trat(){
@@ -1720,7 +1965,7 @@ public class Back extends JPanel implements ActionListener {
 		if(minMoney<1000){
 			minMoney=1000;
 		}
-		time1.start();
+		//time1.start();
 		if (timeStart == true) {
 			day++;
 			dayZarp++;
@@ -1786,81 +2031,7 @@ public class Back extends JPanel implements ActionListener {
 		
 		return;
 	}
-	public void actionPerformed(ActionEvent e) {
-		try {
-			daycount();
-		} catch (IOException e1) {
-			time1.stop();
-		
-		}
-		Save();
-			
-			try {
-				bisness();
-			} catch (IOException e1) {
-				time1.stop();
-			
-			}
-		
-		try {
-			invest();
-		} catch (IOException e1) {
-			time1.stop();
-			
-		}
-		try {
-			work();
-		} catch (IOException e1) {
-			
-			time1.stop();
-		}
-		try {
-			lern();
-		} catch (IOException e1) {
-			time1.stop();
-			
-		}
-		try {
-			info();
-		} catch (IOException e1) {
-			time1.stop();
-			
-		}
-		try {
-			transport();
-		} catch (IOException e1) {
-			time1.stop();
-			
-		}
-		try {
-			doplern();
-		} catch (IOException e1) {
-			time1.stop();
-			
-		}
-		doprab();
-		try {
-			houseinfo();
-		} catch (IOException e1) {
-			time1.stop();
-			
-		}
-		trat();
 
-		// daycount2();
-		if (e.getSource() == bStartTime) {
-			// timeFast=false;
-			timeStart = true;
-		}
-		if (e.getSource() == bFastTime) {
-			timeStart = false;
-			// timeFast=true;
-		}
-		if (e.getSource() == bStopTime) {
-			timeStart = false;
-		}
-
-	}
 	
 
 	public class eHandler implements ActionListener {
@@ -2013,51 +2184,51 @@ public class Back extends JPanel implements ActionListener {
 				wp.wpan.bWorkerZavod.setBackground(bStopTime.getBackground());
 			}
 			if (e.getSource() == wp.wpan.bBoss) {
-
+				zarpday = 10000;
 				wp.wpan.bBoss.setBackground(Color.GREEN);
 			} else {
 				wp.wpan.bBoss.setBackground(bStopTime.getBackground());
 			}
 			if (e.getSource() == wp.wpan.bBossDoc) {
-
+				zarpday = 2750;
 				wp.wpan.bBossDoc.setBackground(Color.GREEN);
 			} else {
 				wp.wpan.bBossDoc.setBackground(bStopTime.getBackground());
 			}
 			if (e.getSource() == wp.wpan.bBossGov) {
-
+				zarpday = 4000;
 				wp.wpan.bBossGov.setBackground(Color.GREEN);
 			} else {
 				wp.wpan.bBossGov.setBackground(bStopTime.getBackground());
 			}
 			if (e.getSource() == wp.wpan.bBossInginerProj) {
-
+				zarpday = 2500;
 				wp.wpan.bBossInginerProj.setBackground(Color.GREEN);
 			} else {
 				wp.wpan.bBossInginerProj.setBackground(bStopTime
 						.getBackground());
 			}
 			if (e.getSource() == wp.wpan.bBossIT) {
-
+				zarpday = 3750;
 				wp.wpan.bBossIT.setBackground(Color.GREEN);
 			} else {
 				wp.wpan.bBossIT.setBackground(bStopTime.getBackground());
 			}
 			
 			if (e.getSource() == wp.wpan.bBossOtdel) {
-
+				zarpday = 4700;
 				wp.wpan.bBossOtdel.setBackground(Color.GREEN);
 			} else {
 				wp.wpan.bBossOtdel.setBackground(bStopTime.getBackground());}
 			
 			if (e.getSource() == wp.wpan.bBossPolice) {
-
+				zarpday = 3000;
 				wp.wpan.bBossPolice.setBackground(Color.GREEN);
 			} else {
 				wp.wpan.bBossPolice.setBackground(bStopTime.getBackground());
 			}
 			if (e.getSource() == wp.wpan.bBossZeh) {
-
+				zarpday = 2330;
 				wp.wpan.bBossZeh.setBackground(Color.GREEN);
 			} else {
 				wp.wpan.bBossZeh.setBackground(bStopTime.getBackground());
@@ -2117,7 +2288,7 @@ public class Back extends JPanel implements ActionListener {
 				wp.wpan.bProgrammer.setBackground(bStopTime.getBackground());
 			}
 			if (e.getSource() == wp.wpan.bZamBoss) {
-
+				zarpday =6750;
 				wp.wpan.bZamBoss.setBackground(Color.GREEN);
 			} else {
 				wp.wpan.bZamBoss.setBackground(bStopTime.getBackground());
@@ -2482,7 +2653,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=2500;
 				if(money-cena>=0){
 					money=money-cena;
-					
+					tr1=true;
 					t1LiveS=day1;
 					
 					tsc.tran.bTrans1.setBackground(Color.LIGHT_GRAY);
@@ -2492,6 +2663,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=7500;
 				if(money-cena>=0){
 					money=money-cena;
+					tr2=true;
 					prestige=prestige+10;
 					t2LiveS=day1;
 					tsc.tran.bTrans2.setBackground(Color.LIGHT_GRAY);
@@ -2501,6 +2673,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=15000;
 				if(money-cena>=0){
 					money=money-cena;
+					tr3=true;
 					prestige=prestige+25;
 					t3LiveS=day1;
 					tsc.tran.bTrans3.setBackground(Color.LIGHT_GRAY);
@@ -2510,6 +2683,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=35000;
 				if(money-cena>=0){
 					money=money-cena;
+					tr4=true;
 					prestige=prestige+40;
 					t4LiveS=day1;
 					tsc.tran.bTrans4.setBackground(Color.LIGHT_GRAY);
@@ -2519,6 +2693,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=70000;
 				if(money-cena>=0){
 					money=money-cena;
+					tr5=true;
 					prestige=prestige+60;
 					t5LiveS=day1;
 					tsc.tran.bTrans5.setBackground(Color.LIGHT_GRAY);
@@ -2528,6 +2703,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=150000;
 				if(money-cena>=0){
 					money=money-cena;
+					tr6=true;
 					prestige=prestige+85;
 					t6LiveS=day1;
 					tsc.tran.bTrans6.setBackground(Color.LIGHT_GRAY);
@@ -2537,6 +2713,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=200000;
 				if(money-cena>=0){
 					money=money-cena;
+					tr7=true;
 					prestige=prestige+100;
 					t7LiveS=day1;
 					tsc.tran.bTrans7.setBackground(Color.LIGHT_GRAY);
@@ -2546,6 +2723,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=350000;
 				if(money-cena>=0){
 					money=money-cena;
+					tr8=true;
 					prestige=prestige+120;
 					t8LiveS=day1;
 					tsc.tran.bTrans8.setBackground(Color.LIGHT_GRAY);
@@ -2555,6 +2733,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=420000;
 				if(money-cena>=0){
 					money=money-cena;
+					tr9=true;
 					prestige=prestige+130;
 					t9LiveS=day1;
 					tsc.tran.bTrans9.setBackground(Color.LIGHT_GRAY);
@@ -2564,6 +2743,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=570000;
 				if(money-cena>=0){
 					money=money-cena;
+					tr10=true;
 					prestige=prestige+150;
 					t10LiveS=day1;
 					tsc.tran.bTrans10.setBackground(Color.LIGHT_GRAY);
@@ -2574,6 +2754,7 @@ public class Back extends JPanel implements ActionListener {
 				if(money-cena>=0){
 					money=money-cena;
 					prestige=prestige+175;
+					tr11=true;
 					t11LiveS=day1;
 					tsc.tran.bTrans11.setBackground(Color.LIGHT_GRAY);
 				}else{JOptionPane.showMessageDialog(null, "У вас недостаточно денег ");}
@@ -2583,6 +2764,7 @@ public class Back extends JPanel implements ActionListener {
 				if(money-cena>=0){
 					money=money-cena;
 					prestige=prestige+250;
+					tr12=true;
 					t12LiveS=day1;
 					tsc.tran.bTrans12.setBackground(Color.LIGHT_GRAY);
 				}else{JOptionPane.showMessageDialog(null, "У вас недостаточно денег ");}
@@ -2591,6 +2773,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=1000000;
 				if(money-cena>=0){
 					money=money-cena;
+					tr13=true;
 					prestige=prestige+390;
 					t13LiveS=day1;
 					tsc.tran.bTrans13.setBackground(Color.LIGHT_GRAY);
@@ -2600,6 +2783,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=1500000;
 				if(money-cena>=0){
 					money=money-cena;
+					tr14=true;
 					prestige=prestige+600;
 					t14LiveS=day1;
 					tsc.tran.bTrans14.setBackground(Color.LIGHT_GRAY);
@@ -2610,6 +2794,7 @@ public class Back extends JPanel implements ActionListener {
 				if(money-cena>=0){
 					money=money-cena;
 					prestige=prestige+725;
+					tr15=true;
 					t15LiveS=day1;
 					tsc.tran.bTrans15.setBackground(Color.LIGHT_GRAY);
 				}else{JOptionPane.showMessageDialog(null, "У вас недостаточно денег ");}
@@ -2618,6 +2803,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=2500000;
 				if(money-cena>=0){
 					money=money-cena;
+					tr16=true;
 					prestige=prestige+1150;
 					t16LiveS=day1;
 					tsc.tran.bTrans16.setBackground(Color.LIGHT_GRAY);
@@ -2627,6 +2813,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=4000000;
 				if(money-cena>=0){
 					money=money-cena;
+					tr17=true;
 					prestige=prestige+1600;
 					t17LiveS=day1;
 					tsc.tran.bTrans17.setBackground(Color.LIGHT_GRAY);
@@ -2636,6 +2823,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=4000000;
 				if(money-cena>=0){
 					money=money-cena;
+					tr18=true;
 					prestige=prestige+1600;
 					t18LiveS=day1;
 					tsc.tran.bTrans18.setBackground(Color.LIGHT_GRAY);
@@ -2645,6 +2833,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=5500000;
 				if(money-cena>=0){
 					money=money-cena;
+					tr19=true;
 					prestige=prestige+2100;
 					t19LiveS=day1;
 					tsc.tran.bTrans19.setBackground(Color.LIGHT_GRAY);
@@ -2654,6 +2843,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=7500000;
 				if(money-cena>=0){
 					money=money-cena;
+					tr20=true;
 					prestige=prestige+2500;
 					t20LiveS=day1;
 					tsc.tran.bTrans20.setBackground(Color.LIGHT_GRAY);
@@ -2663,6 +2853,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=12000*1000;
 				if(money-cena>=0){
 					money=money-cena;
+					tr21=true;
 					prestige=prestige+3000;
 					t21LiveS=day1;
 					tsc.tran.bTrans21.setBackground(Color.LIGHT_GRAY);
@@ -2672,6 +2863,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=18000*1000;
 				if(money-cena>=0){
 					money=money-cena;
+					tr22=true;
 					prestige=prestige+3600;
 					t22LiveS=day1;
 					tsc.tran.bTrans22.setBackground(Color.LIGHT_GRAY);
@@ -2680,6 +2872,7 @@ public class Back extends JPanel implements ActionListener {
 			if(e.getSource()==tsc.tran.bTrans23){
 				cena=25000*1000;
 				if(money-cena>=0){
+					tr23=true;
 					money=money-cena;
 					prestige=prestige+4250;
 					t23LiveS=day1;
@@ -2689,6 +2882,7 @@ public class Back extends JPanel implements ActionListener {
 			if(e.getSource()==tsc.tran.bTrans24){
 				cena=50000*1000;
 				if(money-cena>=0){
+					tr24=true;
 					money=money-cena;
 					prestige=prestige+6000;
 					t24LiveS=day1;
@@ -2699,6 +2893,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=130*1000*1000;
 				if(money-cena>=0){
 					money=money-cena;
+					tr25=true;
 					prestige=prestige+10000;
 					t25LiveS=day1;
 					tsc.tran.bTrans25.setBackground(Color.LIGHT_GRAY);
@@ -2709,6 +2904,7 @@ public class Back extends JPanel implements ActionListener {
 				if(money-cena>=0){
 					money=money-cena;
 					prestige=prestige+25000;
+					tr26=true;
 					t26LiveS=day1;
 					tsc.tran.bTrans26.setBackground(Color.LIGHT_GRAY);
 				}else{JOptionPane.showMessageDialog(null, "У вас недостаточно денег ");}
@@ -2717,6 +2913,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=1500000000L;
 				if(money-cena>=0){
 					money=money-cena;
+					tr27=true;
 					prestige=prestige+60000;
 					t27LiveS=day1;
 					tsc.tran.bTrans27.setBackground(Color.LIGHT_GRAY);
@@ -2726,6 +2923,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=12000000000L;
 				if(money-cena>=0){
 					money=money-cena;
+					tr28=true;
 					prestige=prestige+500000;
 					t28LiveS=day1;
 					tsc.tran.bTrans28.setBackground(Color.LIGHT_GRAY);
@@ -2735,6 +2933,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=50000000000L;
 				if(money-cena>=0){
 					money=money-cena;
+					tr29=true;
 					prestige=prestige+1000000;
 					t29LiveS=day1;
 					tsc.tran.bTrans29.setBackground(Color.LIGHT_GRAY);
@@ -2744,6 +2943,7 @@ public class Back extends JPanel implements ActionListener {
 				cena=180000000000L;
 				if(money-cena>=0){
 					money=money-cena;
+					tr30=true;
 					prestige=prestige+2000000;
 					t30LiveS=day1;
 					tsc.tran.bTrans30.setBackground(Color.LIGHT_GRAY);
@@ -2786,7 +2986,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				if(money-cena>=0){
 					money=money-cena;
 					h3++;
-					
+					hau3=true;
 					prestige=prestige+750;
 					hsc.hause.bHause3.setBackground(Color.YELLOW);
 				}else{JOptionPane.showMessageDialog(null, "У вас не хватает средств на эту покупку");}
@@ -2796,7 +2996,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				cena=2100000L;
 				if(money-cena>=0){
 					h4++;
-					
+					hau4=true;
 					money=money-cena;
 					prestige=prestige+1200;
 					hsc.hause.bHause4.setBackground(Color.YELLOW);
@@ -2808,7 +3008,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				if(money-cena>=0){
 					money=money-cena;
 					h5++;
-					
+					hau5=true;
 					prestige=prestige+1500;
 					hsc.hause.bHause5.setBackground(Color.YELLOW);
 				}else{JOptionPane.showMessageDialog(null, "У вас не хватает средств на эту покупку");}
@@ -2818,7 +3018,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				cena=4200000L;
 				if(money-cena>=0){
 					h6++;
-					
+					hau6=true;
 					money=money-cena;
 					prestige=prestige+2000;
 					hsc.hause.bHause6.setBackground(Color.YELLOW);
@@ -2830,7 +3030,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				if(money-cena>=0){
 					money=money-cena;
 					h7++;
-					
+					hau7=true;
 					prestige=prestige+700;
 					hsc.hause.bHause7.setBackground(Color.YELLOW);
 				}else{JOptionPane.showMessageDialog(null, "У вас не хватает средств на эту покупку");}
@@ -2840,7 +3040,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				cena=1450000L;
 				if(money-cena>=0){
 					money=money-cena;
-					
+					hau8=true;
 					h8++;
 					prestige=prestige+800;
 					hsc.hause.bHause8.setBackground(Color.YELLOW);
@@ -2852,7 +3052,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				if(money-cena>=0){
 					money=money-cena;
 					h9++;
-					
+					hau9=true;
 					prestige=prestige+1400;
 					hsc.hause.bHause9.setBackground(Color.YELLOW);
 				}else{JOptionPane.showMessageDialog(null, "У вас не хватает средств на эту покупку");}
@@ -2863,7 +3063,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				if(money-cena>=0){
 					money=money-cena;
 					h10++;
-					
+					hau10=true;
 					prestige=prestige+1750;
 					hsc.hause.bHause10.setBackground(Color.YELLOW);
 				}else{JOptionPane.showMessageDialog(null, "У вас не хватает средств на эту покупку");}
@@ -2874,7 +3074,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				if(money-cena>=0){
 					money=money-cena;
 					h11++;
-					
+					hau11=true;
 					prestige=prestige+2500;
 					hsc.hause.bHause11.setBackground(Color.YELLOW);
 				}else{JOptionPane.showMessageDialog(null, "У вас не хватает средств на эту покупку");}
@@ -2885,7 +3085,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				if(money-cena>=0){
 					money=money-cena;
 					h12++;
-					
+					hau12=true;
 					prestige=prestige+2000;
 					hsc.hause.bHause12.setBackground(Color.YELLOW);
 				}else{JOptionPane.showMessageDialog(null, "У вас не хватает средств на эту покупку");}
@@ -2896,7 +3096,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				if(money-cena>=0){
 					money=money-cena;
 					h13++;
-					
+					hau13=true;
 					prestige=prestige+2000;
 					hsc.hause.bHause13.setBackground(Color.YELLOW);
 				}else{JOptionPane.showMessageDialog(null, "У вас не хватает средств на эту покупку");}
@@ -2907,7 +3107,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				if(money-cena>=0){
 					money=money-cena;
 					h14++;
-					
+					hau14=true;
 					prestige=prestige+2500;
 					hsc.hause.bHause14.setBackground(Color.YELLOW);
 				}else{JOptionPane.showMessageDialog(null, "У вас не хватает средств на эту покупку");}
@@ -2918,7 +3118,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				if(money-cena>=0){
 					money=money-cena;
 					h15++;
-					
+					hau15=true;
 					prestige=prestige+3300;
 					hsc.hause.bHause15.setBackground(Color.YELLOW);
 				}else{JOptionPane.showMessageDialog(null, "У вас не хватает средств на эту покупку");}
@@ -2929,7 +3129,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				if(money-cena>=0){
 					money=money-cena;
 					h16++;
-					
+					hau16=true;
 					prestige=prestige+4200;
 					hsc.hause.bHause16.setBackground(Color.YELLOW);
 				}else{JOptionPane.showMessageDialog(null, "У вас не хватает средств на эту покупку");}
@@ -2940,7 +3140,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				if(money-cena>=0){
 					money=money-cena;
 					h17++;
-					
+					hau17=true;
 					prestige=prestige+5500;
 					hsc.hause.bHause17.setBackground(Color.YELLOW);
 				}else{JOptionPane.showMessageDialog(null, "У вас не хватает средств на эту покупку");}
@@ -2950,7 +3150,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				cena=25000000L;
 				if(money-cena>=0){
 					h18++;
-					
+					hau18=true;
 					money=money-cena;
 					prestige=prestige+7000;
 					hsc.hause.bHause18.setBackground(Color.YELLOW);
@@ -2962,7 +3162,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				if(money-cena>=0){
 					money=money-cena;
 					h19++;
-					
+					hau19=true;
 					prestige=prestige+10000;
 					hsc.hause.bHause19.setBackground(Color.YELLOW);
 				}else{JOptionPane.showMessageDialog(null, "У вас не хватает средств на эту покупку");}
@@ -2973,7 +3173,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				if(money-cena>=0){
 					money=money-cena;
 					h20++;
-					
+					hau20=true;
 					prestige=prestige+12000;
 					hsc.hause.bHause20.setBackground(Color.YELLOW);
 				}else{JOptionPane.showMessageDialog(null, "У вас не хватает средств на эту покупку");}
@@ -2984,7 +3184,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				if(money-cena>=0){
 					money=money-cena;
 					h21++;
-					
+					hau21=true;
 					prestige=prestige+15000;
 					hsc.hause.bHause21.setBackground(Color.YELLOW);
 				}else{JOptionPane.showMessageDialog(null, "У вас не хватает средств на эту покупку");}
@@ -2995,7 +3195,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				if(money-cena>=0){
 					money=money-cena;
 					h22++;
-					
+					hau22=true;
 					prestige=prestige+20000;
 					hsc.hause.bHause22.setBackground(Color.YELLOW);
 				}else{JOptionPane.showMessageDialog(null, "У вас не хватает средств на эту покупку");}
@@ -3005,7 +3205,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				cena=250000000L;
 				if(money-cena>=0){
 					h23++;
-					
+					hau23=true;
 					money=money-cena;
 					prestige=prestige+30000;
 					hsc.hause.bHause23.setBackground(Color.YELLOW);
@@ -3017,7 +3217,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				if(money-cena>=0){
 					money=money-cena;
 					h24++;
-					
+					hau24=true;
 					prestige=prestige+45000;
 					hsc.hause.bHause24.setBackground(Color.YELLOW);
 				}else{JOptionPane.showMessageDialog(null, "У вас не хватает средств на эту покупку");}
@@ -3028,6 +3228,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				
 				if(money-cena>=0){
 					money=money-cena;
+					hau25=true;
 					prestige=prestige+80000;
 					hsc.hause.bHause25.setBackground(Color.YELLOW);
 					h25++;

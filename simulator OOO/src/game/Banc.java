@@ -3,15 +3,19 @@ package game;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.Serializable;
+
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
-public class Banc extends JPanel {
+public class Banc extends JPanel implements Serializable{
+	static final long serialVersionUID=3L;
 
 	JButton bPutMoney = new JButton(
 			"\u041F\u043E\u043B\u043E\u0436\u0438\u0442\u044C");

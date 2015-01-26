@@ -6,11 +6,15 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
 import java.awt.Font;
+import java.io.Serializable;
+
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
-public class MySite extends JPanel {
+public class MySite extends JPanel implements Serializable{
+	static final long serialVersionUID=19L;
 
 	JButton bStartComp = new JButton(" \u0421\u043E\u0437\u0434\u0430\u0442\u044C \u0441\u0430\u0439\u0442 \"\u21161\" 110000\u0420");
 	JLabel lblNewLabel = new JLabel("\u041C\u043E\u0438 \u0441\u0430\u0439\u0442\u044B");

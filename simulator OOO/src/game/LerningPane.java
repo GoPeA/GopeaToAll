@@ -8,11 +8,14 @@ import javax.swing.Timer;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.Serializable;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class LerningPane extends JPanel  {
+public class LerningPane extends JPanel implements Serializable {
+	static final long serialVersionUID=18L;
 	//Timer time1 =new Timer(800,this);
 	JButton bKoledSles = new JButton("\u041A\u043E\u043B\u0435\u0434\u0436 \u043D\u0430 \u0441\u043B\u0435\u0441\u0430\u0440\u044F(\u0440\u0430\u0431\u043E\u0447\u0438\u0439 \u0437\u0430\u0432\u043E\u0434\u0430) 1 \u0433");
 	JButton bKoledElek = new JButton("\u041A\u043E\u043B\u0435\u0434\u0436 \u043D\u0430 \u044D\u043B\u0435\u043A\u0442\u0440\u0438\u043A\u0430 1\u0433");

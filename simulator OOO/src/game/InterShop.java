@@ -4,11 +4,15 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
+
 import java.awt.Font;
+import java.io.Serializable;
+
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 
-public class InterShop extends JPanel {
+public class InterShop extends JPanel implements Serializable{
+	static final long serialVersionUID=14L;
 	JButton bBack = new JButton("\u041D\u0430\u0437\u0430\u0434");
 	JLabel lblNewLabel = new JLabel("\u0418\u043D\u0442\u0435\u0440\u043D\u0435\u0442 \u043C\u0430\u0433\u0430\u0437\u0438\u043D");
 	JButton bStartComp = new JButton("\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0418\u043D\u0442\u0435\u0440\u043D\u0435\u0442 \u043C\u0430\u0433\u0430\u0437\u0438\u043D 1'800'000\u0420");

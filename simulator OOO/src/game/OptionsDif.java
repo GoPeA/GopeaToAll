@@ -3,11 +3,13 @@ package game;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class OptionsDif extends JPanel {
+public class OptionsDif extends JPanel implements Serializable{
+	static final long serialVersionUID=20L;
 	JButton bEasy = new JButton("\u041B\u0435\u0433\u043A\u043E");
 	JButton bNormal = new JButton("\u041D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u043E");
 	JButton bHard = new JButton("\u0421\u043B\u043E\u0436\u043D\u043E");

@@ -2,12 +2,16 @@ package game;
 
 import javax.swing.JPanel;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.Serializable;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
-public class Hause extends JPanel {
+public class Hause extends JPanel implements Serializable {
+	static final long serialVersionUID=10L;
 
 	JButton bHause1 = new JButton("\u041A\u043E\u043C\u043D\u0430\u0442\u0430 \u0432 \u043E\u0431\u0449\u0430\u0433\u0435 5000\u0420/\u043C\u0435\u0441\u044F\u0446");
 	JButton bHause2 = new JButton("\u041A\u043E\u043C\u0443\u043D\u0430\u043B\u043A\u0430 10000\u0420/\u043C\u0435\u0441\u044F\u0446");

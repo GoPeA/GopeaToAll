@@ -1,5 +1,7 @@
 package game;
 
+import java.io.Serializable;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
@@ -8,7 +10,8 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class TransportSC extends JPanel {
+public class TransportSC extends JPanel implements Serializable {
+	static final long serialVersionUID=26L;
 	Transport tran=new Transport();
 	JScrollPane scrollPane = new JScrollPane();
 	JLabel LToplivo = new JLabel("\u0422\u043E\u043F\u043B\u0438\u0432\u043E \u0437\u0430 \u0433\u043E\u0434 ");

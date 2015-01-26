@@ -6,12 +6,16 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JComboBox;
+
 import java.awt.Choice;
+import java.io.Serializable;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class StartPane extends JPanel {
+public class StartPane extends JPanel implements Serializable {
+	static final long serialVersionUID=25L;
 	
 	JButton bExit = new JButton("\u0412\u044B\u0445\u043E\u0434");
 	JButton bHelp = new JButton("\u041F\u043E\u043C\u043E\u0449\u044C");

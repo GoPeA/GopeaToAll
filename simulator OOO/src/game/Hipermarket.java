@@ -9,6 +9,7 @@ import javax.swing.Timer;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 import java.text.ParseException;
 
 import javax.swing.SwingConstants;
@@ -21,8 +22,9 @@ import javax.swing.JSlider;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpinnerListModel;
 
-public class Hipermarket extends JPanel implements ActionListener {
-	Timer time1=new Timer(1,this);
+public class Hipermarket extends JPanel implements Serializable {
+	static final long serialVersionUID=12L;
+	//Timer time1=new Timer(1,this);
 	 JButton bBack = new JButton("\u041D\u0430\u0437\u0430\u0434");
 	 JLabel lblNewLabel = new JLabel("\u0421\u0435\u0442\u044C \u0433\u0438\u043F\u0435\u0440\u043C\u0430\u0440\u043A\u0435\u0442\u043E\u0432");
 	 JButton bStartComp = new JButton("\u041E\u0441\u043D\u043E\u0432\u0430\u0442\u044C \u043A\u043E\u043C\u043F\u0430\u043D\u0438\u044E 2'750'000\u0420");
@@ -98,9 +100,5 @@ public class Hipermarket extends JPanel implements ActionListener {
 		//tfBild = new JFormattedTextField(f1);
 		//tfSell = new JFormattedTextField(f1);
 	}
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		//format();
-		
-	}
+	
 }

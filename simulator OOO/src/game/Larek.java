@@ -5,11 +5,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
+
 import java.awt.Font;
+import java.io.Serializable;
+
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
-public class Larek extends JPanel {
+public class Larek extends JPanel implements Serializable{
+	static final long serialVersionUID=17L;
 
 	JButton bBack = new JButton("\u041D\u0430\u0437\u0430\u0434");
 	JButton bStartComp = new JButton("\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0444\u0438\u0440\u043C\u0443 (+1 \u043B\u0430\u0440\u0435\u043A) 60000\u0420");

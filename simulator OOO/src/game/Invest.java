@@ -1,11 +1,14 @@
 package game;
 
+import java.io.Serializable;
+
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
-public class Invest extends JPanel {
+public class Invest extends JPanel implements Serializable{
+	static final long serialVersionUID=16L;
 
 	JButton bInv1 = new JButton("\u0411\u0430\u043D\u043A");
 	JButton bInv2 = new JButton("\u041F\u0410\u041C\u041C \u0441\u0447\u0435\u0442\u0430 \u043E\u0442-50% \u0434\u043E 150%/\u0433\u043E\u0434");

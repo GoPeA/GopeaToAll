@@ -1,10 +1,13 @@
 package game;
 
+import java.io.Serializable;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 
-public class HauseSC extends JPanel {
+public class HauseSC extends JPanel implements Serializable{
+	static final long serialVersionUID=11L;
 	Hause hause=new Hause();
 	JScrollPane scPan = new JScrollPane();
 	JLabel lHauseTrat = new JLabel("\u0417\u0430\u0442\u0440\u0430\u0442\u044B \u0437\u0430 \u0436\u0438\u043B\u044C\u0435 (\u0433\u043E\u0434) = ");

@@ -1,11 +1,14 @@
 package game;
 
+import java.io.Serializable;
+
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
-public class Bisness extends JPanel {
+public class Bisness extends JPanel implements Serializable {
+	static final long serialVersionUID=4L;
 	Shop shop=new Shop();
 	Hipermarket hm=new Hipermarket();
 	JButton bBisn1 = new JButton("\u041B\u0430\u0440\u0435\u043A\r\n");

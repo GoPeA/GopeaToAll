@@ -1,9 +1,12 @@
 package game;
 
+import java.io.Serializable;
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
-public class HomePage extends JPanel {
+public class HomePage extends JPanel implements Serializable {
+	static final long serialVersionUID=13L;
 	
 	JLabel lXP = new JLabel("XP(\u041E\u043F\u044B\u0442)");
 	JLabel lMoney = new JLabel("\u0414\u0435\u043D\u044C\u0433\u0438");
