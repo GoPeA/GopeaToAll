@@ -1618,28 +1618,31 @@ public class Back extends JPanel implements Serializable {
 		if(dlsc.dl.bDL1.getBackground()==Color.yellow){
 			daydLtoL1=180;
 			x=day1-daydLS1;
+			dlb1=true;
 			dlsc.dl.bDL1.setText("Авто школа на права категори  B "+x+"/ 180 дней");
 			if(day1-daydLS1>=daydLtoL1){
 				dlsc.dl.bDL1.setBackground(Color.pink);
-				dlb1=true;
+				
 			}
 		}
 		if(dlsc.dl.bDL2.getBackground()==Color.yellow){
 			daydLtoL2=180;
 			x=day1-daydLS2;
+			dlb2=true;
 			dlsc.dl.bDL2.setText("Авто школа на права категори  C "+x+"/ 180 дней");
 			if(day1-daydLS2>=daydLtoL2){
 				dlsc.dl.bDL2.setBackground(Color.pink);
-				dlb2=true;
+				
 			}
 		}
 		if(dlsc.dl.bDL3.getBackground()==Color.yellow){
 			daydLtoL3=180;
 			x=day1-daydLS3;
+			dlb3=true;
 			dlsc.dl.bDL3.setText("Авто школа на права категори  B "+x+"/ 180 дней");
 			if(day1-daydLS3>=daydLtoL3){
 				dlsc.dl.bDL3.setBackground(Color.pink);
-				dlb3=true;
+				
 			}
 		}
 	}
@@ -1666,14 +1669,7 @@ public class Back extends JPanel implements Serializable {
 		larekToSell=(long)bsc.lar.larsSell.getValue();
 		shopToBay=(long)bsc.shop.shopSToBay.getValue();
 		shopToSell=(long)bsc.shop.shopSToSell.getValue();
-		bsc.mSite.bPlus1.setText("Создать сайты за "+(siteToBay*100000)+"Р");
-		bsc.mSite.bSellSite.setText("Продать сайты за "+(siteToSell*15000)+"Р");
-		bsc.shop.bPlus1.setText("Построить за "+(150000*shopToBay+"Р"));
-		bsc.shop.bMinus1.setText("Продать за "+(40000*shopToSell)+"Р");
-		bsc.lar.bPlus1.setText("Купить дарьки за "+(larekToBild*50000)+"Р");
-		bsc.lar.bSellLarek.setText("Продать ларьки за "+(larekToSell*1000)+"Р");
-		bsc.hm.bBild.setText("Построить за "+(hmToBild*2300000)+"Р");
-		bsc.hm.bSell.setText("Продать за "+(hmToSell*1000000)+"Р");
+		
 		zatratLarek=kolLarek*1235;
 		zatratSite=kolSite*507;
 		zatratShop=kolShop*3562;
@@ -1721,6 +1717,14 @@ public class Back extends JPanel implements Serializable {
 					money=money-hmZatrat;
 			}
 		bsc.lar.lKolLarek.setText("Количество ларьков "+kolLarek);
+		bsc.mSite.bPlus1.setText("Создать сайты за "+(siteToBay*100000)+"Р");
+		bsc.mSite.bSellSite.setText("Продать сайты за "+(siteToSell*15000)+"Р");
+		bsc.shop.bPlus1.setText("Построить за "+(150000*shopToBay+"Р"));
+		bsc.shop.bMinus1.setText("Продать за "+(40000*shopToSell)+"Р");
+		bsc.lar.bPlus1.setText("Купить дарьки за "+(larekToBild*50000)+"Р");
+		bsc.lar.bSellLarek.setText("Продать ларьки за "+(larekToSell*1000)+"Р");
+		bsc.hm.bBild.setText("Построить за "+(hmToBild*2300000)+"Р");
+		bsc.hm.bSell.setText("Продать за "+(hmToSell*1000000)+"Р");
 		
 		bsc.lar.lTrat.setText("Затраты (день) = "+zatratLarek);
 		bsc.lar.lPribil.setText("Прибыль (день) = "+pribLarek );
@@ -1752,8 +1756,8 @@ public class Back extends JPanel implements Serializable {
 		insc.pi.lDayPrib.setText("Прибыль за день = "+((piInvestPrib)*100)+"%");
 		insc.pi.lYaerPrib.setText("Прибыль за год (предположительно) = "+Math.round(((Math.pow((piInvestPrib+1), 365)-1)*100))+"%");
 		}
-		insc.ban.lmaxCredit.setText("Доступен кредит = "+canToCredit+"Р");
-		insc.ban.lMoneyInBank.setText("Сумма в банке = "+MoneyInBank);
+		
+		
 		
 		insc.ban.lKreditMoney.setText("Вы должны ещё выплатить "+MoneyToPay);
 		if(timeStart==true){
@@ -1764,6 +1768,7 @@ public class Back extends JPanel implements Serializable {
 			MoneyInBank=(long)bancMoney;
 			
 		}
+		
 		if(KreditMoney>0& day==365){
 			if(KreditTime>0){
 				KreditTime--;
@@ -1773,17 +1778,18 @@ public class Back extends JPanel implements Serializable {
 			allKreditMoney=(long) (allKreditMoney-MoneyToPay/KreditTime);
 		}
 		insc.pi.lpiMoney.setText("На ПАММ счетах = "+(long)piMoney+"Р");
-		
+		insc.ban.lmaxCredit.setText("Доступен кредит = "+canToCredit+"Р");
+		insc.ban.lMoneyInBank.setText("Сумма в банке = "+(long)bancMoney);
 	}
 	public void Save (){
 		if(dlb1==true){
-			dlsc.dl.bDL1.setBackground(Color.pink);
+			dlsc.dl.bDL1.setBackground(Color.yellow);
 		}
 		if(dlb2==true){
-			dlsc.dl.bDL2.setBackground(Color.pink);
+			dlsc.dl.bDL2.setBackground(Color.yellow);
 		}
 		if(dlb3==true){
-			dlsc.dl.bDL3.setBackground(Color.pink);
+			dlsc.dl.bDL3.setBackground(Color.yellow);
 		}
 		if(tr1==true){
 			tsc.tran.bTrans1.setBackground(Color.LIGHT_GRAY);
@@ -3256,13 +3262,16 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource()==dlsc.dl.bDL1){
 				daydLS1=day1;
+				dlb1=true;
 				dlsc.dl.bDL1.setBackground(Color.yellow);
 			}
 			if(e.getSource()==dlsc.dl.bDL2){
 				daydLS2=day1;
+				dlb2=true;
 				dlsc.dl.bDL2.setBackground(Color.yellow);
 			}
 			if(e.getSource()==dlsc.dl.bDL3){
+				dlb3=true;
 				daydLS3=day1;
 				dlsc.dl.bDL3.setBackground(Color.yellow);
 			}
@@ -3291,7 +3300,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 			}
 			if(e.getSource()==insc.ban.bTakeMoney){
 				y1=(long) insc.ban.tfMoney.getValue();
-				if(MoneyInBank-y1>=0){
+				if((long)bancMoney-y1>=0){
 					money=money+y1;
 					bancMoney=bancMoney-y1;
 					insc.ban.lMoneyInBank.setText("Сумма в банке = "+(long)bancMoney);
@@ -3324,7 +3333,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				if(money-piTakePutMoney>=0){
 					money=money-piTakePutMoney;
 					piMoney=piMoney+piTakePutMoney;
-					insc.pi.lpiMoney.setText("На ПАММ счетах = "+(long)piTakePutMoney+"Р");
+					insc.pi.lpiMoney.setText("На ПАММ счетах = "+(long)piMoney+"Р");
 				}
 			}
 			if(e.getSource()==insc.pi.bTakeMoney){
@@ -3332,7 +3341,7 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 				if((long)piMoney-piTakePutMoney>=0){
 					money=money+piTakePutMoney;
 					piMoney=piMoney-piTakePutMoney;
-					insc.pi.lpiMoney.setText("На ПАММ счетах = "+(long)piTakePutMoney+"Р");
+					insc.pi.lpiMoney.setText("На ПАММ счетах = "+(long)piMoney+"Р");
 				}
 			}
 
