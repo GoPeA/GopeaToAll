@@ -105,11 +105,10 @@ public class Back extends JPanel implements Serializable {
 	long Toplivo;
 	double xp;
 	int zarplata, zarpday, dayZarp;
-	long money =500000000L;
+	long money =500L;
 	
 	Random rand = new Random();
-	//Timer time1 = new Timer(1000, this);
-	//Timer time2 = new Timer(1000, this);
+
 	boolean timeStart = false, timeStop = false, timeFast = false;
 	eHandler eh = new eHandler();
 	String s1, s2, s3, s4, s5, s6, s7, s8, s9;
@@ -146,7 +145,8 @@ public class Back extends JPanel implements Serializable {
 		BarTidy.setForeground(new Color(0, 0, 128));
 		BarTidy.setStringPainted(true);
 		BarTidy.setOrientation(SwingConstants.VERTICAL);
-		BarTidy.setValue(5000);
+		BarTidy.setValue((int)tidy1 );
+		
 		bStopTime.setBackground(UIManager.getColor("Button.background"));
 		bStopTime.setIcon(new ImageIcon(Back.class.getResource("/res/pause.JPG")));
 		bStopTime.addActionListener(new ActionListener() {
