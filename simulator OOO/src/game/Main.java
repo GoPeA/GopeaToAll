@@ -34,6 +34,7 @@ import java.io.ObjectOutputStream;
 
 public class Main extends JFrame implements ActionListener {
 	static final long serialVersionUID=1L;
+	HelpPan helpP=new HelpPan();
 	WorkPane wpan=new WorkPane();
 	SaveClass sc=new SaveClass();
 	 Back bck = new Back();
@@ -41,7 +42,7 @@ public class Main extends JFrame implements ActionListener {
 	eHandler eh = new eHandler();
 	OptionsDif opd = new OptionsDif();
 	Timer time=new Timer(1000,this);
-	private final Object osc=sc;
+
 	 Object  owpan=wpan;
 	boolean setsave=false,getsave=false;
 	int x = 0;
@@ -109,7 +110,8 @@ public class Main extends JFrame implements ActionListener {
 		bck.bStartTime.addActionListener(this);
 		bck.bStopTime.addActionListener(this);
 		bck.bFastTime.addActionListener(this);
-	
+		sp.bHelp.addActionListener(eh);
+		helpP.bBack.addActionListener(eh);
 	}
 	public  void save(){
 		//bck.hause=rObj;
@@ -128,7 +130,24 @@ public class Main extends JFrame implements ActionListener {
 	public class eHandler implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
-			
+			if (e.getSource() == sp.bHelp) {
+				sp.setVisible(false);
+				helpP.setVisible(true);
+
+				contentPane.removeAll();
+
+				contentPane.add(helpP);
+
+			}
+			if (e.getSource() == helpP.bBack) {
+				helpP.setVisible(false);
+				sp.setVisible(true);
+
+				contentPane.removeAll();
+
+				contentPane.add(sp);
+
+			}
 			
 			if (e.getSource() == sp.bExit) {
 				System.exit(0);
@@ -140,7 +159,14 @@ public class Main extends JFrame implements ActionListener {
 				contentPane.removeAll();
 
 				contentPane.add(bck);
-
+				if(bck.legend==false){
+					JOptionPane.showMessageDialog(null, "Вы летели из галактики Туменность Андромеды, звёздной системы XT57h, планеты K56.\n"+
+														"В солнечной сиситеме вы потерпели крушение, т.к вступили в бой с враждебным \n"+
+														"флотом. Катапультировавшись на Землю Вы смошли получить документы и начали \n"+
+														"готовиться к отправке обратно к себе на планету. Ваша задача: при помощи \n"+
+														"Многоразового Межгалактического КК или телепорта отправиться к себе на родину.");
+				bck.legend=true;
+				}
 			}
 			if (e.getSource() == sp.bOptions) {
 				sp.setVisible(false);
@@ -435,8 +461,8 @@ public class Main extends JFrame implements ActionListener {
 					out.writeObject(bck.year);
 					out.writeObject(bck.zarpday);
 					out.writeObject(bck.zarplata);
-				
-					
+				out.writeObject(bck.legend);
+					out.writeObject(bck.win);
 					outPut.close();
 					out.close();
 					
@@ -705,6 +731,8 @@ public class Main extends JFrame implements ActionListener {
 						bck.year=(int) in.readObject();
 						bck.zarpday=(int) in.readObject();
 						bck.zarplata=(int) in.readObject();
+						bck.legend=(boolean) in.readObject();
+						bck.win=(boolean) in.readObject();
 						
 					} catch (ClassNotFoundException e1) {
 						System.out.println("Ошибка");
@@ -719,13 +747,16 @@ public class Main extends JFrame implements ActionListener {
 			}else{
 				getsave=false;
 			}
+			if(e.getSource()==sp.bHelp){
+
+			}
 		}
 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		bck.polet();
 		save();
 		try {
 			bck.daycount();

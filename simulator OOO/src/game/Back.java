@@ -33,6 +33,10 @@ import java.io.Serializable;
 
 public class Back extends JPanel implements Serializable {
 	static final long serialVersionUID=2L;
+	int poletShance;
+	boolean legend,win;
+	PoletAction pola=new PoletAction();
+	Polet polet =new Polet();
 	long canToCredit=100000,minMoney=1000;
 	long piTakePutMoney,PlusOrMinus;
 	double piMoney,piInvestPrib;
@@ -47,7 +51,6 @@ public class Back extends JPanel implements Serializable {
 	long tst1,tst2,tst3,tst4,tst5,tst6,tst7,tst8,tst9,tst10,tst11,tst12,tst13,tst14,tst15,tst16,tst17,tst18,tst19,tst20,tst21,tst22,tst23,tst24,tst25,tst26,tst27,tst28,tst29,tst30;
 	DopLerningSC dlsc=new DopLerningSC();
 	TimeA tma=new TimeA();
-	DopZarSC dzsc= new DopZarSC();
 	InvestAction ina= new InvestAction();
 	BisnessAction ba=new BisnessAction();
 	Banc banc=new Banc();
@@ -105,7 +108,7 @@ public class Back extends JPanel implements Serializable {
 	long Toplivo;
 	double xp;
 	int zarplata, zarpday, dayZarp;
-	long money =500L;
+	long money =5000000000000L;
 	
 	Random rand = new Random();
 
@@ -295,12 +298,11 @@ public class Back extends JPanel implements Serializable {
 		dlsc.dl.bDL3.addActionListener(dla);
 		zone.add(dlsc);
 		zone.setTitleAt(6, "\u041A\u0443\u0440\u0441\u044B");
-		zone.add(dzsc);
-		zone.setTitleAt(7, "\u0425\u0430\u043B\u0442\u0443\u0440\u0430");
 		zone.add(insc);
-		zone.setEnabledAt(8, true);
+		zone.setEnabledAt(7, true);
+		
 
-		zone.setTitleAt(8, "%");
+		zone.setTitleAt(7, "%");
 		GroupLayout gl_lpsc = new GroupLayout(lpsc);
 		gl_lpsc.setHorizontalGroup(gl_lpsc.createParallelGroup(
 				Alignment.LEADING).addGap(0, 705, Short.MAX_VALUE));
@@ -401,7 +403,8 @@ public class Back extends JPanel implements Serializable {
 		insc.pi.bBack.addActionListener(ina);
 		insc.pi.bInvest.addActionListener(ina);
 		insc.pi.bTakeMoney.addActionListener(ina);
-		
+		polet.bPoletMMKK.addActionListener(pola);
+		polet.bPOletTelep.addActionListener(pola);
 		
 		
 		GroupLayout groupLayout = new GroupLayout(this);
@@ -480,7 +483,10 @@ public class Back extends JPanel implements Serializable {
 		);
 		lTidy.setFont(new Font("Dialog", Font.BOLD, 32));
 		zone.add(bsc);
-		zone.setTitleAt(9, "\u0411\u0438\u0437\u043D\u0435\u0441\u0441");
+		zone.setTitleAt(8, "\u0411\u0438\u0437\u043D\u0435\u0441\u0441");
+		zone.setEnabledAt(8, true);
+		zone.add(polet);
+		zone.setTitleAt(9, "\u041F\u043E\u043B\u0435\u0442");
 		zone.setEnabledAt(9, true);
 		lFood.setFont(new Font("Dialog", Font.BOLD, 32));
 		LHealth.setFont(new Font("Dialog", Font.BOLD, 32));
@@ -499,7 +505,16 @@ public class Back extends JPanel implements Serializable {
 	}
 
 	
-
+	public void polet(){
+		
+			if(tr29==true){
+				polet.bPoletMMKK.setEnabled(true);
+			}else{polet.bPoletMMKK.setEnabled(false);}
+			if(tr30==true){
+				polet.bPOletTelep.setEnabled(true);
+			}else{polet.bPOletTelep.setEnabled(false);}
+		
+	}
 	public void daycount2() throws IOException{
 		//time2.start();
 		if (timeFast == true) {
@@ -1780,7 +1795,11 @@ public class Back extends JPanel implements Serializable {
 		insc.pi.lpiMoney.setText("На ПАММ счетах = "+(long)piMoney+"Р");
 		insc.ban.lmaxCredit.setText("Доступен кредит = "+canToCredit+"Р");
 		insc.ban.lMoneyInBank.setText("Сумма в банке = "+(long)bancMoney);
-	}
+		if(MoneyToPay>0){
+		insc.ban.lMoneyYear.setText("Ежегодные выплаты = "+(MoneyToPay/KreditTime));
+		insc.ban.lallKreditToPay.setText("Полная стоимость кредита = "+MoneyToPay);
+		}
+		}
 	public void Save (){
 		if(dlb1==true){
 			dlsc.dl.bDL1.setBackground(Color.yellow);
@@ -3505,6 +3524,32 @@ if(e.getSource()==hsc.hause.bHause2 & hsc.hause.bHause2.getBackground()==Color.Y
 		public void actionPerformed(ActionEvent e) {
 			testMoney();
 			
+			
+		}
+		
+	}
+	public class PoletAction implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			if(e.getSource()==polet.bPoletMMKK){
+				poletShance=rand.nextInt(99);
+				if(poletShance%5==0||poletShance==8||poletShance==23||poletShance==34||poletShance==48
+						||poletShance==59||poletShance==67||poletShance==74||poletShance==84||poletShance==92||poletShance==99){
+					win=true;
+					JOptionPane.showMessageDialog(null, "Вы выйграли");
+				}else{tr29=false;
+				tsc.tran.bTrans29.setBackground(bStartTime.getBackground());
+				JOptionPane.showMessageDialog(null, "Полет не удался");}
+			}
+			if(e.getSource()==polet.bPOletTelep){
+				poletShance=rand.nextInt(99);
+				if(poletShance!=21){
+					win=true;
+					JOptionPane.showMessageDialog(null, "Вы выйграли");
+				}else{tr30=false;
+				tsc.tran.bTrans30.setBackground(bStartTime.getBackground());
+				JOptionPane.showMessageDialog(null, "Полет не удался");}
+			}
 			
 		}
 		
