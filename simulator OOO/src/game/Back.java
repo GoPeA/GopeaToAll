@@ -108,7 +108,7 @@ public class Back extends JPanel implements Serializable {
 	long Toplivo;
 	double xp;
 	int zarplata, zarpday, dayZarp;
-	long money =5000000000000L;
+	long money =500L;
 	
 	Random rand = new Random();
 

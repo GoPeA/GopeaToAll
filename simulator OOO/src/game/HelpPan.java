@@ -19,6 +19,16 @@ public class HelpPan extends JPanel {
 		HelpText.setEditable(false);
 		HelpText.setBounds(10, 34, 766, 500);
 		add(HelpText);
+		HelpText.setBackground(getBackground());
+		HelpText.setText("\n"+
+						"\n"+
+						"\n"+
+						"\n"+
+						"\n"+
+						"\n"+
+						"\n"+
+						"\n"+
+						"");
 
 	}
 }

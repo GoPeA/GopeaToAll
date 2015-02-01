@@ -1,5 +1,6 @@
 package game;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JLabel;
@@ -8,11 +9,19 @@ import javax.swing.Timer;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.Serializable;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import java.awt.Font;
+
+import javax.swing.SwingConstants;
+
+import java.awt.Color;
 
 public class LerningPane extends JPanel implements Serializable {
 	static final long serialVersionUID=18L;
@@ -31,97 +40,61 @@ public class LerningPane extends JPanel implements Serializable {
 	//eHandler eh=new eHandler();
 	JProgressBar LernBar = new JProgressBar();
 	int day,day1,year,clic;
+	HelpA ha=new HelpA();
 	boolean KoledSles,KoleedElek,KoledSanteh,InginerUniv,DocUniv,PoliceUniv,ITPuniv,ITSpecUniv,UristUniv,MenegerUniv,lerning=false,KoledSlesStart,KoledElekStart,KoledSantehStart,InginerUnivStart,DocUnivStart,PoliceUnivStart,ITPUnivStart,ITSpecUnivStart,UristUnivStart,MenegerUnivStart;
 	
 	int dayStartLern,dayLerning,dayToLerning;
+	 JLabel label = new JLabel("\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435");
+	 JLabel lHelp = new JLabel("\u0421\u043F\u0440\u0430\u0432\u043A\u0430");
 	public LerningPane() {
+		bKoledElek.setBounds(362, 93, 348, 23);
 		
 		bKoledElek.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+		bInginerUniv.setBounds(5, 161, 347, 23);
 		
 		bInginerUniv.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+		LernBar.setBounds(5, 408, 695, 19);
 		
 		
 		LernBar.setStringPainted(true);
-		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(5)
-					.addComponent(bKoledSles, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
-					.addGap(5)
-					.addComponent(bKoledElek, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
-					.addGap(10))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(175)
-					.addComponent(bKoledSanteh, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
-					.addGap(175))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(5)
-					.addComponent(bInginerUniv, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
-					.addGap(5)
-					.addComponent(bDocUniv, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
-					.addGap(10))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(5)
-					.addComponent(bPoliceUniv, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
-					.addGap(5)
-					.addComponent(bITPUniv, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
-					.addGap(10))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(5)
-					.addComponent(bITSpecUniv, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
-					.addGap(5)
-					.addComponent(bUristUniv, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
-					.addGap(10))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(10)
-					.addComponent(LernBar, GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
-					.addGap(10))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(175)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(bHighScholl, GroupLayout.PREFERRED_SIZE, 165, Short.MAX_VALUE)
-							.addGap(175))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(bMenegerUniv, GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
-							.addGap(175))))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(11)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(bKoledSles)
-						.addComponent(bKoledElek))
-					.addGap(11)
-					.addComponent(bKoledSanteh)
-					.addGap(28)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(bInginerUniv)
-						.addComponent(bDocUniv))
-					.addGap(11)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(bPoliceUniv)
-						.addComponent(bITPUniv))
-					.addGap(11)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(bITSpecUniv)
-						.addComponent(bUristUniv))
-					.addGap(11)
-					.addComponent(bMenegerUniv)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(bHighScholl)
-					.addGap(111)
-					.addComponent(LernBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-		);
-		setLayout(groupLayout);
+		setLayout(null);
+		bKoledSles.setBounds(5, 93, 347, 23);
+		add(bKoledSles);
+		add(bKoledElek);
+		bKoledSanteh.setBounds(175, 127, 365, 23);
+		add(bKoledSanteh);
+		add(bInginerUniv);
+		bDocUniv.setBounds(362, 161, 348, 23);
+		add(bDocUniv);
+		bPoliceUniv.setBounds(5, 195, 347, 23);
+		add(bPoliceUniv);
+		bITPUniv.setBounds(357, 195, 348, 23);
+		add(bITPUniv);
+		bITSpecUniv.setBounds(5, 229, 347, 23);
+		add(bITSpecUniv);
+		bUristUniv.setBounds(357, 229, 348, 23);
+		add(bUristUniv);
+		bHighScholl.setBounds(175, 297, 365, 23);
+		add(bHighScholl);
+		bMenegerUniv.setBounds(175, 263, 365, 23);
+		add(bMenegerUniv);
+		add(LernBar);
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setFont(new Font("Tahoma", Font.BOLD, 14));
+		label.setBounds(87, 23, 509, 23);
+		
+		add(label);
+		lHelp.setForeground(Color.BLUE);
+		lHelp.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lHelp.setBounds(637, 29, 53, 15);
+		
+		add(lHelp);
 		bKoledSles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -159,6 +132,42 @@ public class LerningPane extends JPanel implements Serializable {
 			}
 		});
 
+		lHelp.addMouseListener(ha);
+	}
+	public class HelpA implements MouseListener{
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			if(e.getSource()==lHelp){
+				JOptionPane.showMessageDialog(null, "Здесь вы можеье пройти обучение\n"+
+													"для открытия новых типов работы.");
+			}
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
 		
 	}
 }

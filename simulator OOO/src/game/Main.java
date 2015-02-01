@@ -208,7 +208,7 @@ public class Main extends JFrame implements ActionListener {
 			
 			if(e.getSource()==sp.bSave){
 				try {
-					FileOutputStream outPut= new FileOutputStream("Save.ser");
+					FileOutputStream outPut= new FileOutputStream("save/Save.txt");
 					ObjectOutputStream out= new ObjectOutputStream(outPut);
 					
 					
@@ -475,7 +475,7 @@ public class Main extends JFrame implements ActionListener {
 			
 			if(e.getSource()==sp.bDownl){
 				try {
-					FileInputStream inPut= new FileInputStream("Save.ser");
+					FileInputStream inPut= new FileInputStream("save/Save.txt");
 					//FileInputStream inPut1= new FileInputStream("Save1.ser");
 					ObjectInputStream in= new ObjectInputStream(inPut);
 					//ObjectInputStream in1= new ObjectInputStream(inPut1);

@@ -10,10 +10,13 @@ import java.io.Serializable;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
+
+import java.awt.Color;
 
 public class ResourseMarket extends JPanel implements Serializable {
 	static final long serialVersionUID=22L;
@@ -50,6 +53,7 @@ public class ResourseMarket extends JPanel implements Serializable {
 	JButton bHelth10 = new JButton(" \u0428\u0432\u0435\u0439\u0446\u0430\u0440\u0438\u044F +100%\u2665 150000\u0420");
 	JTextPane resHelpPan = new JTextPane();
 	 JLabel l1 = new JLabel("");
+	 JLabel lHelp = new JLabel("\u0421\u043F\u0440\u0430\u0432\u043A\u0430");
 	public ResourseMarket() {
 	
 		bHelth1.setBounds(468, 50, 232, 23);
@@ -137,25 +141,35 @@ public class ResourseMarket extends JPanel implements Serializable {
 		resHelpPan.setBounds(10, 401, 680, 78);
 		add(resHelpPan);
 		resHelpPan.setBackground(getBackground());
-		l1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		l1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		l1.setHorizontalAlignment(SwingConstants.CENTER);
-		l1.setBounds(59, 11, 581, 28);
+		l1.setBounds(110, 11, 438, 28);
 		
 		add(l1);
 		l1.setText("Пополнение еды, бодрости  и здоровья");
+		lHelp.setHorizontalAlignment(SwingConstants.CENTER);
+		lHelp.setForeground(Color.BLUE);
+		lHelp.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lHelp.setBounds(604, 20, 56, 15);
+		
+		add(lHelp);
 		bFood9.addMouseListener(m);
 		bFood10.addMouseListener(m);
 		bEnerge9.addMouseListener(m);
 		bEnerge10.addMouseListener(m);
 		bHelth9.addMouseListener(m);
 		bHelth10.addMouseListener(m);
+		lHelp.addMouseListener(m);
 
 	}
 	public class Mouse implements MouseListener{
 
 		@Override
-		public void mouseClicked(MouseEvent arg0) {
-			// TODO Auto-generated method stub
+		public void mouseClicked(MouseEvent e) {
+			if(e.getSource()==lHelp){
+				JOptionPane.showMessageDialog(null, "Здесь вы можете пополнить\n"+
+													"Здоровье(♥),Бодрость(☺)и Еду(F).");
+			}
 			
 		}
 
