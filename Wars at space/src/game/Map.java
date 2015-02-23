@@ -40,18 +40,6 @@ public class Map extends JPanel implements Serializable {
 		Draw();
 	
 	}
-	public void movePlan(){
-		dar=5/n;
-		if(dar<1){
-			dar=1;
-		}
-		if(ypol<=5){
-			py=py+dar;
-		}
-		if(xpol<=10){
-			px=px+dar;
-		}
-	}
 
 	public void Draw(){
 		setLayout(null);
@@ -82,19 +70,26 @@ public class Map extends JPanel implements Serializable {
 		add(p11);
 		p2.setLayout(null);
 	}
-
-	public void clickTest(){
-		System.out.println(p1.country);
-		if(p1.click==true){
-			System.out.println(p1.country);
+	public void movePlan(){
+		dar=5/n;
+		if(dar<1){
+			dar=1;
 		}
-		
+		if(ypol<=5){
+			py=py+dar;
+		}
+		if(xpol<=10){
+			px=px+dar;
+		}
 	}
+
 	public class Mouse implements MouseListener{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-	
+		if((e.getX()>=px+p1.x & e.getX()<=px+p1.x+p1.rad)&(e.getY()>=py+p1.y & e.getY()<=py+p1.y+p1.rad)){
+		System.out.println(p1.country);
+		}
 			
 		}
 

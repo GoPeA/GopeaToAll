@@ -57,7 +57,7 @@ public class Main extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		map.Draw();
-		map.clickTest();
+		
 		if(map.timer==true){
 		map.movePlan();
 		}
