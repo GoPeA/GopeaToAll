@@ -73,6 +73,7 @@ public void movePlan(){
 		
 	}
 public void px_py(){
+//p1.paint(getGraphics(),px,py);
 	p1.px=px;
 	p1.py=py;
 	p2.px=px;
@@ -95,6 +96,10 @@ public void px_py(){
 	p10.py=py;
 	p11.px=px;
 	p11.py=py;
+	
+	
+			
+	//repaint();
 }
 
 	public void Draw(){
@@ -117,15 +122,15 @@ public void px_py(){
 		
 		add(p1);
 		add(p2);
-		//add(p3);
-		//add(p4);
-		//add(p5);
-		//add(p6);
-		//add(p7);
-		//add(p8);
-		//add(p9);
-		//add(p10);
-		//add(p11);
+		add(p3);
+		add(p4);
+		add(p5);
+		add(p6);
+		add(p7);
+		add(p8);
+		add(p9);
+		add(p10);
+		add(p11);
 		
 		
 		
@@ -180,11 +185,13 @@ public void px_py(){
 		public void mouseMoved(MouseEvent e) {
 			xpol=e.getX();
 			ypol=e.getY();
+			if(isFocusable()==true){
 			if(xpol<=30||xpol>=swid-30){
 				timer=true;
 			}
 			if(ypol<=30||ypol>=shig-30){
 				timer=true;
+			}
 			}
 		}
 		

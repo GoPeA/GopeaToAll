@@ -77,7 +77,7 @@ public class Main extends JFrame implements ActionListener {
 			map.px_py();
 			map.Draw();
 		}
-		
+		repaint();
 
 	}
 

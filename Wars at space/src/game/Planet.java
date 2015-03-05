@@ -44,34 +44,10 @@ public class Planet extends JPanel implements Serializable  {
 		g=(Graphics2D) g;
 		
 		
-		g.clearRect(x+px-2, y+py-2,rad+4,rad+4);
+		
 		g.setColor(color);
-		g.fillOval(x+px-2, y+py-2,rad+4,rad+4);
-		if(px1<px){
-			px1=px;
-			py1=py;
-		g.clearRect(x+px1-5, y+py1-5,5,rad+10);
-		}
-		if(px1>px){
-			px1=px;
-			py1=py;
-		g.clearRect(x+px1+rad, y+py1-5,10,rad+10);
-		}
-		if(py1<py){
-			px1=px;
-			py1=py;
-		g.clearRect(x+px1-5, y+py1-5,rad+10,5);
-		}
-		if(py1>py){
-			px1=px;
-			py1=py;
-		g.clearRect(x+px1-5, y+py1+rad,rad+10,5);
-		}
-		if(px1>px&py1>py){
-			px1=px;
-			py1=py;
-		g.clearRect(x+px1-5, y+py1-5,rad+10,5);
-		}
+		g.fillOval(x+px, y+py,rad,rad);
+		
 		repaint();
 		
 	}
