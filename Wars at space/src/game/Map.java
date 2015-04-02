@@ -10,17 +10,26 @@ import java.io.Serializable;
 
 import javax.swing.JPanel;
 
+import java.awt.FlowLayout;
+
+import javax.swing.JLabel;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+
 public class Map extends JPanel implements Serializable {
 	boolean make=false;
 	private static final long serialVersionUID = 2L;
 	Mouse mouse = new Mouse();
 	int swid, shig;
-	String armname;
-	int armx;
-	int army;
-	int countryarm=1;
-	int kolarm;
-	int difarm;
+	boolean show;
+	PlanetMenu pm= new PlanetMenu();
+	//String armname;
+	MenuOfPlanet mop= new MenuOfPlanet();
+	//int armx;
+	//int army;
+	//int countryarm=1;
+	//int kolarm;
+	//int difarm;
 	Mouse1 mouse1 = new Mouse1();
 	int px, py;
 	int dar;
@@ -28,7 +37,7 @@ public class Map extends JPanel implements Serializable {
 	int ypol, xpol;
 	boolean timer;
 	Dimension sSize;
-	int armNomer;
+	int ptca;
 	Planet p1 = new Planet(50, 25, 100, "mars", 1, n);
 	Planet p2 = new Planet(200, 200, 64, "", 2, n);
 	Planet p3 = new Planet(500, 200, 70, "", 3, n);
@@ -41,7 +50,7 @@ public class Map extends JPanel implements Serializable {
 	Planet p10 = new Planet(640, 800, 125, "", 10, n);
 	Planet p11 = new Planet(500, 830, 125, "", 11, n);
 	
-	Army maparm[][]=new Army[10][17500000];
+	Army maparm[][]=new Army[100][175000];
 	Pl1 Pl1= new Pl1();
 	Pl2 Pl2= new Pl2();
 	Pl3 Pl3= new Pl3();
@@ -53,8 +62,10 @@ public class Map extends JPanel implements Serializable {
 	Pl9 Pl9= new Pl9();
 	Pl10 Pl10= new Pl10();
 	Pl11 Pl11= new Pl11();
+
 	public Map() {
 		setBackground(Color.WHITE);
+		setLayout(null);
 		sSize = Toolkit.getDefaultToolkit().getScreenSize();
 		swid = sSize.width;
 		shig = sSize.height;
@@ -66,30 +77,73 @@ public class Map extends JPanel implements Serializable {
 		
 		addMouseMotionListener(mouse1);
 	}
-
-	public void ArmyForMap(){
-		for(armNomer=0;armNomer<3;armNomer++){
-		maparm[countryarm][armNomer]=new Army(armNomer*100,armNomer*100,1,5000,"",countryarm,armNomer);
-		maparm[countryarm][armNomer].setBounds(0, 0, 15000, 15000);
-		add(maparm[countryarm][armNomer]);
-		repaint();
+	Army a1 =new Army(100,500,1,5000,"",1,1);
+	int px1;
+	int py1;
+	public void createArmy(){
+		if(pm.ptca==1){
+			armx=50;
+			ary=150;
+			countryarm=1;
 		}
-		make=true;
+		if(pm.ptca==2){
+			armx=290;
+			ary=500;
+			countryarm=2;
+			
+		}
+	}
+	public void ArmyForMap(){
+		
+			
+			
+			if(countryarm!=0){
+		maparm[countryarm][armNomer]=new Army(armx,ary,armdiferent,armkolvo,armname,countryarm,armNomer);
+			}
+		//if(px1!=px||py1!=py){
+			px1=px;
+			py1=py;
+			removeAll();
+			plShow();
+			for(countryarm=1;countryarm<=2;countryarm++){
+				if(maparm[countryarm][armNomer]!=null){
+					
+		maparm[countryarm][armNomer].setBounds(maparm[countryarm][armNomer].x+px, maparm[countryarm][armNomer].y+py, 45, 30);
+		add(maparm[countryarm][armNomer]);
+				}
+			}
+		//a1.setBounds(a1.x+px, a1.y+py, 45, 30);
+		//add(a1);
+		//}
+		repaint();
 		
 	}
+	
+
 	public void ArmyPol(){
-		for(armNomer=0;armNomer<3;armNomer++){
-			maparm[countryarm][armNomer].px=px;
-			maparm[countryarm][armNomer].py=py;
-			repaint();
-		}
+	
+		
+			
+		
+	}
+	int armx;
+	int ary;
+	int armkolvo;
+	String armname;
+	int countryarm;
+	int armNomer;
+	int armdiferent;
+	public Army farm() {
+		
+
+		return new Army(armx,ary,armdiferent,armkolvo,armname,countryarm,armNomer);
 	}
 
 
 	
-	public void movePlan() {
+	public synchronized  void movePlan() {
 		
-		dar = 6 / n;
+		dar =6/ n;
 
 		if (dar < 1) {
 			dar = 1;
@@ -179,28 +233,42 @@ public class Map extends JPanel implements Serializable {
 		p11.setBounds(0, 0, 15000 / n, 15000 / n);
 		add(p11);
 	}
+	public void plShow(){
+		pl1();
+		pl2();
+		pl3();
+		pl4();
+		pl5();
+		pl6();
+		pl7();
+		pl8();
+		pl9();
+		pl10();
+		pl11();
+	}
 	//public void pl12(){
 		///p2.px = px;
 		//p2.py = py;
 		//p2.setBounds(0, 0, 15000 / n, 15000 / n);
 		//add(p2);
 	//}
-	public void army1(){
-		
-	}
+	
 
 
 	public class Mouse implements MouseListener {
 
-		@Override
+	
 		public void mouseClicked(MouseEvent e) {
 			if ((e.getX() >= px + p1.x & e.getX() <= px + p1.x + p1.rad)
 					& (e.getY() >= py + p1.y & e.getY() <= py + p1.y + p1.rad)) {
-				System.out.println(p1.country);
-			}
+				//mop.setBounds(0, 0, 400, 300);
+				//JOptionPane.showMessageDialog(mop, "");
+				pm.setBounds(0, 0, pm.getWidth(), pm.getHeight());
+				pm.setVisible(true);
+				
 
 		}
-
+		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
 
@@ -245,11 +313,22 @@ public class Map extends JPanel implements Serializable {
 		}
 
 	}
+	
 	public class Pl1 implements Runnable{
 
 		@Override
 		public void run() {
 			pl1();
+			pl2();
+			pl3();
+			pl4();
+			pl5();
+			pl6();
+			pl7();
+			pl8();
+			pl9();
+			pl10();
+			pl11();
 			
 		}
 		

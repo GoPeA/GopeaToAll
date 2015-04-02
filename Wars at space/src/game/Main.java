@@ -92,12 +92,7 @@ public class Main extends JFrame implements ActionListener {
 		if (map.timer == true) {
 			map.movePlan();
 		}
-		if(px!=map.px||py!=map.py){
-			px=map.px;
-			py=map.py;
-			
-			
-		}
+		
 		map.pl1();
 		map.pl2();
 		map.pl3();
@@ -109,11 +104,11 @@ public class Main extends JFrame implements ActionListener {
 		map.pl9();
 		map.pl10();
 		map.pl11();
-		//if(map.armNomer<3){
+		map.createArmy();
 		map.ArmyForMap();
-		//}
-		map.ArmyPol();
-		map.army1();
+		repaint();
+		//map.ArmyPol();
+		
 		
 		repaint();
 
