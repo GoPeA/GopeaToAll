@@ -17,7 +17,7 @@ public class Army extends JLabel implements Serializable {
 	int px,py;
 	String name,img;
 	int armNomer;
-	//Image img;
+	
 	public Army(int x,int y,int diferent,int kolvo,String name,int countryArm,int armNomer) {
 		//setLayout(null);
 		this.x=x;
@@ -30,9 +30,9 @@ public class Army extends JLabel implements Serializable {
 		//if(countryArm==1){
 			img="res/армия.png";
 		//}
-			//setBackground(Color.blue);
+			
 			setIcon(new ImageIcon(img));
-			//setBounds(x,y,45,30);
+			setBounds(x,y,45,30);
 repaint();
 	}
 	
