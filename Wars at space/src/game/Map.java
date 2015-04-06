@@ -21,7 +21,9 @@ public class Map extends JPanel implements Serializable {
 	private static final long serialVersionUID = 2L;
 	Mouse mouse = new Mouse();
 	int swid, shig;
+	int clickCountry;
 	boolean show;
+	int plNomer;
 	PlanetMenu pm = new PlanetMenu();
 	// String armname;
 	MenuOfPlanet mop = new MenuOfPlanet();
@@ -38,30 +40,11 @@ public class Map extends JPanel implements Serializable {
 	boolean timer;
 	Dimension sSize;
 	int ptca;
-	Planet p1 = new Planet(50, 25, 100, "mars", 1, n);
-	Planet p2 = new Planet(200, 200, 64, "", 2, n);
-	Planet p3 = new Planet(500, 200, 70, "", 3, n);
-	Planet p4 = new Planet(365, 50, 30, "", 4, n);
-	Planet p5 = new Planet(280, 450, 64, "", 5, n);
-	Planet p6 = new Planet(600, 300, 125, "", 6, n);
-	Planet p7 = new Planet(800, 200, 125, "", 7, n);
-	Planet p8 = new Planet(750, 340, 125, "", 8, n);
-	Planet p9 = new Planet(952, 452, 125, "", 9, n);
-	Planet p10 = new Planet(640, 800, 125, "", 10, n);
-	Planet p11 = new Planet(500, 830, 125, "", 11, n);
+	Planet pl[] = new Planet[111];
 
 	Army maparm[][] = new Army[100][175000];
 	Pl1 Pl1 = new Pl1();
 	Pl2 Pl2 = new Pl2();
-	Pl3 Pl3 = new Pl3();
-	Pl4 Pl4 = new Pl4();
-	Pl5 Pl5 = new Pl5();
-	Pl6 Pl6 = new Pl6();
-	Pl7 Pl7 = new Pl7();
-	Pl8 Pl8 = new Pl8();
-	Pl9 Pl9 = new Pl9();
-	Pl10 Pl10 = new Pl10();
-	Pl11 Pl11 = new Pl11();
 
 	public Map() {
 		setBackground(Color.WHITE);
@@ -74,8 +57,21 @@ public class Map extends JPanel implements Serializable {
 		swid = sSize.width;
 		shig = sSize.height;
 		movePlan();
-
+		plMake();
 		addMouseMotionListener(mouse1);
+	}
+
+	public void plMake() {
+		pl[1] = new Planet(0, 0, 50, "", 1, n);
+		pl[2] = new Planet(100, 0, 50, "", 0, n);
+		pl[3] = new Planet(250, 85, 50, "", 0, n);
+		pl[4] = new Planet(135, 90, 50, "", 0, n);
+		pl[5] = new Planet(501, 20, 40, "", 0, n);
+		pl[6] = new Planet(800, 500, 60, "", 0, n);
+		pl[7] = new Planet(126, 325, 50, "", 0, n);
+		pl[8] = new Planet(714, 45, 40, "", 0, n);
+		pl[9] = new Planet(954, 845, 50, "", 0, n);
+		pl[10] = new Planet(80, 950, 50, "", 0, n);
 	}
 
 	Army a1 = new Army(100, 500, 1, 5000, "", 1, 1);
@@ -123,10 +119,6 @@ public class Map extends JPanel implements Serializable {
 
 	}
 
-	public void ArmyPol() {
-
-	}
-
 	int armx;
 	int ary;
 	int armkolvo;
@@ -148,131 +140,52 @@ public class Map extends JPanel implements Serializable {
 		if (xpol <= 20) {
 			px = px + dar;
 		}
-		if (ypol >= shig - 100 & py > 0) {
+		if (ypol >= shig - 100  ) {
 			py = py - dar;
 		}
-		if (xpol >= swid - 20 & px > 0) {
+		if (xpol >= swid - 20 ) {
 			px = px - dar;
 		}
 
 	}
 
-	public synchronized void pl1() {
-
-		p1.px = px;
-		p1.py = py;
-		p1.setBounds(0, 0, 15000 / n, 15000 / n);
-		add(p1);
-
-		// repaint();
+	public synchronized void plShow() {
+		for (plNomer = 1; plNomer < 111; plNomer++) {
+			if (pl[plNomer] != null) {
+				pl[plNomer].px = px;
+				pl[plNomer].py = py;
+				pl[plNomer].setBounds(0, 0, 15000 / n, 15000 / n);
+				add(pl[plNomer]);
+			}
+		}
 	}
-
-	public synchronized void pl2() {
-		p2.px = px;
-		p2.py = py;
-		p2.setBounds(0, 0, 15000 / n, 15000 / n);
-		add(p2);
-	}
-
-	public synchronized void pl3() {
-		p3.px = px;
-		p3.py = py;
-		p3.setBounds(0, 0, 15000 / n, 15000 / n);
-		add(p3);
-	}
-
-	public synchronized void pl4() {
-		p4.px = px;
-		p4.py = py;
-		p4.setBounds(0, 0, 15000 / n, 15000 / n);
-		add(p4);
-	}
-
-	public synchronized void pl5() {
-		p5.px = px;
-		p5.py = py;
-		p5.setBounds(0, 0, 15000 / n, 15000 / n);
-		add(p5);
-	}
-
-	public synchronized void pl6() {
-		p6.px = px;
-		p6.py = py;
-		p6.setBounds(0, 0, 15000 / n, 15000 / n);
-		add(p6);
-	}
-
-	public synchronized void pl7() {
-		p7.px = px;
-		p7.py = py;
-		p7.setBounds(0, 0, 15000 / n, 15000 / n);
-		add(p7);
-	}
-
-	public synchronized void pl8() {
-		p8.px = px;
-		p8.py = py;
-		p8.setBounds(0, 0, 15000 / n, 15000 / n);
-		add(p8);
-	}
-
-	public synchronized void pl9() {
-		p9.px = px;
-		p9.py = py;
-		p9.setBounds(0, 0, 15000 / n, 15000 / n);
-		add(p9);
-	}
-
-	public synchronized void pl10() {
-		p10.px = px;
-		p10.py = py;
-		p10.setBounds(0, 0, 15000 / n, 15000 / n);
-		add(p2);
-	}
-
-	public synchronized void pl11() {
-		p11.px = px;
-		p11.py = py;
-		p11.setBounds(0, 0, 15000 / n, 15000 / n);
-		add(p11);
-	}
-
-	public void plShow() {
-		pl1();
-		pl2();
-		pl3();
-		pl4();
-		pl5();
-		pl6();
-		pl7();
-		pl8();
-		pl9();
-		pl10();
-		pl11();
-	}
-
-	// public void pl12(){
-	// /p2.px = px;
-	// p2.py = py;
-	// p2.setBounds(0, 0, 15000 / n, 15000 / n);
-	// add(p2);
-	// }
 
 	public class Mouse implements MouseListener {
 
 		public void mouseClicked(MouseEvent e) {
-			if ((e.getX() >= px + p1.x & e.getX() <= px + p1.x + p1.rad)
-					& (e.getY() >= py + p1.y & e.getY() <= py + p1.y + p1.rad)) {
+			for (plNomer = 1; plNomer < 111; plNomer++) {
+				if (pl[plNomer] != null) {
+					if ((e.getX() >= px + pl[plNomer].x & e.getX() <= px
+							+ pl[plNomer].x + pl[plNomer].rad)
+							& (e.getY() >= py + pl[plNomer].y & e.getY() <= py
+									+ pl[plNomer].y + pl[plNomer].rad)) {
+						clickCountry=plNomer;
+						System.out.println(clickCountry);
+						pm.setBounds(0, 0, pm.getWidth(), pm.getHeight());
+						pm.setVisible(true);
 
-				pm.setBounds(0, 0, pm.getWidth(), pm.getHeight());
-				pm.setVisible(true);
-
+					}
+				}
 			}
 			for (countryarm = 1; countryarm <= 2; countryarm++) {
 				if (maparm[countryarm][armNomer] != null) {
-					if ((e.getX() >= maparm[countryarm][armNomer].x+px & e.getX()<=maparm[countryarm][armNomer].x+px+45)&
-							(e.getY()>=maparm[countryarm][armNomer].y+py & e.getY()<=maparm[countryarm][armNomer].y+py+30)) {
-						System.out.println("Выбрана армия страны номер "+ maparm[countryarm][armNomer].countryArm);
+					if ((e.getX() >= maparm[countryarm][armNomer].x + px & e
+							.getX() <= maparm[countryarm][armNomer].x + px + 45)
+							& (e.getY() >= maparm[countryarm][armNomer].y + py & e
+									.getY() <= maparm[countryarm][armNomer].y
+									+ py + 30)) {
+						System.out.println("Выбрана армия страны номер "
+								+ maparm[countryarm][armNomer].countryArm);
 					}
 				}
 			}
@@ -325,19 +238,8 @@ public class Map extends JPanel implements Serializable {
 
 	public class Pl1 implements Runnable {
 
-		@Override
 		public void run() {
-			pl1();
-			pl2();
-			pl3();
-			pl4();
-			pl5();
-			pl6();
-			pl7();
-			pl8();
-			pl9();
-			pl10();
-			pl11();
+			ArmyForMap();
 
 		}
 
@@ -345,99 +247,8 @@ public class Map extends JPanel implements Serializable {
 
 	public class Pl2 implements Runnable {
 
-		@Override
 		public void run() {
-			pl2();
-
-		}
-
-	}
-
-	public class Pl3 implements Runnable {
-
-		@Override
-		public void run() {
-			pl3();
-
-		}
-
-	}
-
-	public class Pl4 implements Runnable {
-
-		@Override
-		public void run() {
-			pl4();
-
-		}
-
-	}
-
-	public class Pl5 implements Runnable {
-
-		@Override
-		public void run() {
-			pl5();
-
-		}
-
-	}
-
-	public class Pl6 implements Runnable {
-
-		@Override
-		public void run() {
-			pl6();
-
-		}
-
-	}
-
-	public class Pl7 implements Runnable {
-
-		@Override
-		public void run() {
-			pl7();
-
-		}
-
-	}
-
-	public class Pl8 implements Runnable {
-
-		@Override
-		public void run() {
-			pl8();
-
-		}
-
-	}
-
-	public class Pl9 implements Runnable {
-
-		@Override
-		public void run() {
-			pl9();
-
-		}
-
-	}
-
-	public class Pl10 implements Runnable {
-
-		@Override
-		public void run() {
-			pl10();
-
-		}
-
-	}
-
-	public class Pl11 implements Runnable {
-
-		@Override
-		public void run() {
-			pl11();
+			plShow();
 
 		}
 

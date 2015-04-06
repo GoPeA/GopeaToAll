@@ -44,15 +44,15 @@ public class Main extends JFrame implements ActionListener {
 	public void potoc() {
 		Thread t1=new Thread(map.Pl1);
 		Thread t2=new Thread(map.Pl2);
-		Thread t3=new Thread(map.Pl3);
-		Thread t4=new Thread(map.Pl4);
-		Thread t5=new Thread(map.Pl5);
-		Thread t6=new Thread(map.Pl6);
-		Thread t7=new Thread(map.Pl7);
-		Thread t8=new Thread(map.Pl8);
-		Thread t9=new Thread(map.Pl9);
-		Thread t10=new Thread(map.Pl10);
-		Thread t11=new Thread(map.Pl11);
+		//Thread t3=new Thread(map.Pl3);
+		//Thread t4=new Thread(map.Pl4);
+		//Thread t5=new Thread(map.Pl5);
+		//Thread t6=new Thread(map.Pl6);
+		//Thread t7=new Thread(map.Pl7);
+		//Thread t8=new Thread(map.Pl8);
+		///Thread t9=new Thread(map.Pl9);
+		//Thread t10=new Thread(map.Pl10);
+		//Thread t11=new Thread(map.Pl11);
 		//t1.start();
 		//t2.start();
 		//t3.start();
@@ -93,17 +93,7 @@ public class Main extends JFrame implements ActionListener {
 			map.movePlan();
 		}
 		
-		map.pl1();
-		map.pl2();
-		map.pl3();
-		map.pl4();
-		map.pl5();
-		map.pl6();
-		map.pl7();
-		map.pl8();
-		map.pl9();
-		map.pl10();
-		map.pl11();
+		map.plShow();
 		map.createArmy();
 		map.ArmyForMap();
 		repaint();
