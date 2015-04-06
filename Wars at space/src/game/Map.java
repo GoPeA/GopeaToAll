@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 public class Map extends JPanel implements Serializable {
 	boolean make = false;
 	private static final long serialVersionUID = 2L;
+	ArmyMenu am= new ArmyMenu();
 	Mouse mouse = new Mouse();
 	int swid, shig;
 	int clickCountry;
@@ -62,16 +63,16 @@ public class Map extends JPanel implements Serializable {
 	}
 
 	public void plMake() {
-		pl[1] = new Planet(0, 0, 50, "", 1, n);
-		pl[2] = new Planet(100, 0, 50, "", 0, n);
-		pl[3] = new Planet(250, 85, 50, "", 0, n);
-		pl[4] = new Planet(135, 90, 50, "", 0, n);
-		pl[5] = new Planet(501, 20, 40, "", 0, n);
-		pl[6] = new Planet(800, 500, 60, "", 0, n);
-		pl[7] = new Planet(126, 325, 50, "", 0, n);
-		pl[8] = new Planet(714, 45, 40, "", 0, n);
-		pl[9] = new Planet(954, 845, 50, "", 0, n);
-		pl[10] = new Planet(80, 950, 50, "", 0, n);
+		pl[1] = new Planet(0, 0, 50, "Земля", 1, n);
+		pl[2] = new Planet(100, 0, 50, "Марс", 0, n);
+		pl[3] = new Planet(250, 85, 50, "XT56", 0, n);
+		pl[4] = new Planet(135, 90, 50, "M89ty", 0, n);
+		pl[5] = new Planet(501, 20, 40, "K87M8", 0, n);
+		pl[6] = new Planet(800, 500, 60, "Юпитер", 0, n);
+		pl[7] = new Planet(126, 325, 50, "Венера", 0, n);
+		pl[8] = new Planet(714, 45, 40, "Сатурн", 0, n);
+		pl[9] = new Planet(954, 845, 50, "Нептун", 0, n);
+		pl[10] = new Planet(80, 950, 50, "Плутон", 0, n);
 	}
 
 	Army a1 = new Army(100, 500, 1, 5000, "", 1, 1);
@@ -172,6 +173,7 @@ public class Map extends JPanel implements Serializable {
 						clickCountry=plNomer;
 						System.out.println(clickCountry);
 						pm.setBounds(0, 0, pm.getWidth(), pm.getHeight());
+						pm.setTitle(pl[plNomer].name);
 						pm.setVisible(true);
 
 					}

@@ -17,28 +17,20 @@ public class PlanetMenu extends JDialog {
 	MenuOfPlanet mop= new MenuOfPlanet();
 	eHandler eh= new eHandler();
 	int ptca;
-	public static void main(String[] args) {
-		try {
-			PlanetMenu dialog = new PlanetMenu();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+
 
 	/**
 	 * Create the dialog.
 	 */
 	public PlanetMenu() {
 		getContentPane().setLayout(null);
-		setBounds(100, 100, 450, 300);
+		setBounds(0,0,450,600);
 		getContentPane().setLayout(null);
-		contentPanel.setBounds(0, 0, 434, 261);
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPanel.setBounds(0, 0, 450, 600);
+		
 		getContentPane().add(contentPanel);
 		contentPanel.setLayout(null);
-		mop.setBounds(0, 0, 450, 300);
+		mop.setBounds(0, 0, 450, 600);
 		contentPanel.add(mop);
 		
 			
@@ -50,7 +42,7 @@ public class PlanetMenu extends JDialog {
 	
 		public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==mop.bCA){
-			ptca=mop.BoxPlanet.getSelectedIndex()+1;
+			//ptca=mop.BoxPlanet.getSelectedIndex()+1;
 			
 		}else{ptca=0;}
 			

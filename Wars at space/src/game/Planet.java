@@ -37,7 +37,7 @@ public class Planet extends JPanel implements Serializable  {
 		}
 		
 		this.name=name;
-		
+		//setBackground(Color.BLUE);
 		setLayout(null);
 		
 		tit.setText(name);
