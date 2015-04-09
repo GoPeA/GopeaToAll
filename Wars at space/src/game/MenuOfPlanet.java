@@ -17,11 +17,11 @@ public class MenuOfPlanet extends JPanel {
 		setLayout(null);
 		
 		
-		btnNewButton.setBounds(10, 566, 205, 23);
+		btnNewButton.setBounds(10, 535, 205, 23);
 		add(btnNewButton);
 		
 		
-		bCA.setBounds(235, 566, 205, 23);
+		bCA.setBounds(235, 535, 205, 23);
 		add(bCA);
 
 	}

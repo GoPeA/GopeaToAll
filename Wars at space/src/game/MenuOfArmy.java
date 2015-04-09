@@ -13,7 +13,7 @@ public class MenuOfArmy extends JPanel {
 	public MenuOfArmy() {
 		setBackground(new Color(192, 192, 192));
 		setLayout(null);
-		list.setBounds(10, 11, 430, 578);
+		list.setBounds(10, 11, 280, 477);
 		add(list);
 
 	}

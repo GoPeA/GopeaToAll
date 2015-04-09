@@ -10,20 +10,14 @@ import javax.swing.border.EmptyBorder;
 
 public class ArmyMenu extends JDialog {
 
-	private final JPanel contentPanel = new JPanel();
+	JPanel contentPanel = new JPanel();
 
-	/**
-	 * Launch the application.
-	 */
-
-
-	/**
-	 * Create the dialog.
-	 */
+	MenuOfArmy moa= new MenuOfArmy();
 	public ArmyMenu() {
-		setBounds(0, 0, 450, 300);
+		contentPanel.setBounds(0, 0, 300, 500);
+		setBounds(0, 0,300, 500);
 		getContentPane().setLayout(null);
-		contentPanel.setBounds(0, 0, 434, 261);
+		
 		
 		getContentPane().add(contentPanel);
 		contentPanel.setLayout(null);

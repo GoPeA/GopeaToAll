@@ -13,6 +13,7 @@ import javax.swing.Timer;
 
 public class Main extends JFrame implements ActionListener {
 	Map map = new Map();
+	Game game= new Game();
 	int px,py;
 	Timer time = new Timer(1, this);
 
@@ -53,8 +54,15 @@ public class Main extends JFrame implements ActionListener {
 		///Thread t9=new Thread(map.Pl9);
 		//Thread t10=new Thread(map.Pl10);
 		//Thread t11=new Thread(map.Pl11);
-		//t1.start();
-		//t2.start();
+		t1.start();
+		t2.start();
+	try {
+			t1.join();
+			t2.join();
+		} catch (InterruptedException e) {
+			
+		}
+		
 		//t3.start();
 		//t4.start();
 		//t5.start();
@@ -92,7 +100,7 @@ public class Main extends JFrame implements ActionListener {
 		if (map.timer == true) {
 			map.movePlan();
 		}
-		
+		game.showMap();
 		map.plShow();
 		map.createArmy();
 		map.ArmyForMap();

@@ -17,6 +17,9 @@ public class PlanetMenu extends JDialog {
 	MenuOfPlanet mop= new MenuOfPlanet();
 	eHandler eh= new eHandler();
 	int ptca;
+	public int countryArm;
+	public int ytoArm;
+	public int xtoArm;
 
 
 	/**
@@ -42,7 +45,7 @@ public class PlanetMenu extends JDialog {
 	
 		public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==mop.bCA){
-			//ptca=mop.BoxPlanet.getSelectedIndex()+1;
+			ptca=1;
 			
 		}else{ptca=0;}
 			

@@ -3,6 +3,7 @@ package game;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -20,10 +21,12 @@ public class Map extends JPanel implements Serializable {
 	boolean make = false;
 	private static final long serialVersionUID = 2L;
 	ArmyMenu am= new ArmyMenu();
+	JPanel pan= new JPanel();
 	Mouse mouse = new Mouse();
 	int swid, shig;
-	int clickCountry;
+	int clickCountry,clickArmy,clickArmyCountry;
 	boolean show;
+	int clicX, clicY;
 	int plNomer;
 	PlanetMenu pm = new PlanetMenu();
 	// String armname;
@@ -75,33 +78,25 @@ public class Map extends JPanel implements Serializable {
 		pl[10] = new Planet(80, 950, 50, "Плутон", 0, n);
 	}
 
-	Army a1 = new Army(100, 500, 1, 5000, "", 1, 1);
-	int px1;
-	int py1;
+
 
 	public void createArmy() {
-		if (pm.ptca == 1) {
-			armx = 50;
-			ary = 150;
-			countryarm = 1;
+		if(pm.ptca==1){
+			armx=500;
+			ary=100;
+			countryarm=1;
+			maparm[countryarm][armNomer] = new Army( armx,ary,armdiferent,
+					armkolvo, armname, countryarm, armNomer);
+			pm.ptca=0;
 		}
-		if (pm.ptca == 2) {
-			armx = 290;
-			ary = 500;
-			countryarm = 2;
-
-		}
+		System.out.println(pm.ptca);
 	}
 
 	public void ArmyForMap() {
 
-		if (countryarm != 0) {
-			maparm[countryarm][armNomer] = new Army(armx, ary, armdiferent,
-					armkolvo, armname, countryarm, armNomer);
-		}
+		
 		// if(px1!=px||py1!=py){
-		px1 = px;
-		py1 = py;
+		
 		removeAll();
 		plShow();
 		for (countryarm = 1; countryarm <= 2; countryarm++) {
@@ -113,9 +108,7 @@ public class Map extends JPanel implements Serializable {
 				add(maparm[countryarm][armNomer]);
 			}
 		}
-		// a1.setBounds(a1.x+px, a1.y+py, 45, 30);
-		// add(a1);
-		// }
+		
 		repaint();
 
 	}
@@ -159,11 +152,15 @@ public class Map extends JPanel implements Serializable {
 				add(pl[plNomer]);
 			}
 		}
+		///pan.setBounds(0, 0, 1280, 50);
+		//pan.setBackground(Color.black); Примерно таким способом можно написать меню;
+		//add(pan);
 	}
 
 	public class Mouse implements MouseListener {
 
 		public void mouseClicked(MouseEvent e) {
+			
 			for (plNomer = 1; plNomer < 111; plNomer++) {
 				if (pl[plNomer] != null) {
 					if ((e.getX() >= px + pl[plNomer].x & e.getX() <= px
@@ -172,25 +169,39 @@ public class Map extends JPanel implements Serializable {
 									+ pl[plNomer].y + pl[plNomer].rad)) {
 						clickCountry=plNomer;
 						System.out.println(clickCountry);
-						pm.setBounds(0, 0, pm.getWidth(), pm.getHeight());
+						pm.setBounds(0, 0,460, 610);
 						pm.setTitle(pl[plNomer].name);
 						pm.setVisible(true);
 
 					}
 				}
 			}
+			
+			
 			for (countryarm = 1; countryarm <= 2; countryarm++) {
+				
+				
 				if (maparm[countryarm][armNomer] != null) {
+					
 					if ((e.getX() >= maparm[countryarm][armNomer].x + px & e
 							.getX() <= maparm[countryarm][armNomer].x + px + 45)
 							& (e.getY() >= maparm[countryarm][armNomer].y + py & e
 									.getY() <= maparm[countryarm][armNomer].y
 									+ py + 30)) {
+						am.setBounds(0, 0, 310, 510);
+						am.setVisible(true);
+						clickArmy=maparm[countryarm][armNomer].armNomer;
+						clickArmyCountry=maparm[countryarm][armNomer].countryArm;
+						
 						System.out.println("Выбрана армия страны номер "
 								+ maparm[countryarm][armNomer].countryArm);
 					}
+					maparm[countryarm][armNomer].x=e.getX()-px; // Способ перемещения армий
+					maparm[countryarm][armNomer].y=e.getY()-py;
+					ArmyForMap();
 				}
 			}
+			
 		}
 
 		@Override
