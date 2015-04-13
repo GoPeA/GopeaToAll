@@ -14,7 +14,9 @@ import javax.swing.Timer;
 public class Main extends JFrame implements ActionListener {
 	Map map = new Map();
 	Game game= new Game();
-	int px,py;
+	
+	long day,day1,year,mounth;
+	int countDay;
 	Timer time = new Timer(1, this);
 
 	JPanel cP;
@@ -103,13 +105,27 @@ public class Main extends JFrame implements ActionListener {
 		game.showMap();
 		map.plShow();
 		map.createArmy();
-		map.ArmyForMap();
+		
 		repaint();
 		//map.ArmyPol();
-		
-		
+		//map.movearmPut();// создание линий для перемещения;
+		map.ArmyForMap();
 		repaint();
-
+		date();
+	}
+	public void date(){
+		countDay++;
+		if(countDay==100){
+			day++;
+			day1++;
+			countDay=0;
+			
+		}
+		
+		map.day=day;
+		map.day1=day1;
+		
+	
 	}
 
 }

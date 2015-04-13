@@ -2,8 +2,9 @@ package game;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Toolkit;
-import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -11,14 +12,11 @@ import java.io.Serializable;
 
 import javax.swing.JPanel;
 
-import java.awt.FlowLayout;
-
-import javax.swing.JLabel;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
-
 public class Map extends JPanel implements Serializable {
 	boolean make = false;
+	long day,day1,year,mounth;
+	MoveArmy movarm[][]=new MoveArmy[111][17500];
+	GameMenu gammen= new GameMenu();
 	private static final long serialVersionUID = 2L;
 	ArmyMenu am= new ArmyMenu();
 	JPanel pan= new JPanel();
@@ -46,7 +44,7 @@ public class Map extends JPanel implements Serializable {
 	int ptca;
 	Planet pl[] = new Planet[111];
 
-	Army maparm[][] = new Army[100][175000];
+	Army maparm[][] = new Army[111][175000];
 	Pl1 Pl1 = new Pl1();
 	Pl2 Pl2 = new Pl2();
 
@@ -64,6 +62,7 @@ public class Map extends JPanel implements Serializable {
 		plMake();
 		addMouseMotionListener(mouse1);
 	}
+	
 
 	public void plMake() {
 		pl[1] = new Planet(0, 0, 50, "Земля", 1, n);
@@ -85,23 +84,67 @@ public class Map extends JPanel implements Serializable {
 			armx=500;
 			ary=100;
 			countryarm=1;
+			armNomer=0;
 			maparm[countryarm][armNomer] = new Army( armx,ary,armdiferent,
 					armkolvo, armname, countryarm, armNomer);
 			pm.ptca=0;
 		}
-		System.out.println(pm.ptca);
+		
 	}
+	
 
+	
+	public void movearmPut(){
+		for(countryarm=1;countryarm<111;countryarm++){
+			for(armNomer=0;armNomer<17500;armNomer++){
+				if(maparm[countryarm][armNomer]!=null){
+					if(maparm[countryarm][armNomer].xtogo!=maparm[countryarm][armNomer].x||
+							maparm[countryarm][armNomer].ytogo!=maparm[countryarm][armNomer].y){
+						movarm[countryarm][armNomer]= new MoveArmy(maparm[countryarm][armNomer].x+px+22,
+								maparm[countryarm][armNomer].y+py+15,maparm[countryarm][armNomer].xtogo+px,
+								maparm[countryarm][armNomer].ytogo+py);
+					}
+				}
+			}
+		}
+		
+	}
+	public void moveArmDraw(){
+		for(countryarm=1;countryarm<111;countryarm++){
+			for(armNomer=0;armNomer<17500;armNomer++){
+				if(movarm[countryarm][armNomer]!=null){
+					if(movarm[countryarm][armNomer].x1<movarm[countryarm][armNomer].x2){
+						if(movarm[countryarm][armNomer].y1<movarm[countryarm][armNomer].y2){
+						
+							movarm[countryarm][armNomer].setBounds(movarm[countryarm][armNomer].x1,movarm[countryarm][armNomer].y1,movarm[countryarm][armNomer].x2-movarm[countryarm][armNomer].x1,movarm[countryarm][armNomer].y2-movarm[countryarm][armNomer].y1);
+						}else{
+							movarm[countryarm][armNomer].setBounds(movarm[countryarm][armNomer].x1,movarm[countryarm][armNomer].y2,movarm[countryarm][armNomer].x2-movarm[countryarm][armNomer].x1,movarm[countryarm][armNomer].y1-movarm[countryarm][armNomer].y2);
+						}
+						}else{
+						if(movarm[countryarm][armNomer].y1<movarm[countryarm][armNomer].y2)	{
+							movarm[countryarm][armNomer].setBounds(movarm[countryarm][armNomer].x2,movarm[countryarm][armNomer].y1,movarm[countryarm][armNomer].x1-movarm[countryarm][armNomer].x2,movarm[countryarm][armNomer].y2-movarm[countryarm][armNomer].y1);
+						}else{
+							movarm[countryarm][armNomer].setBounds(movarm[countryarm][armNomer].x2,movarm[countryarm][armNomer].y2,movarm[countryarm][armNomer].x1-movarm[countryarm][armNomer].x2,movarm[countryarm][armNomer].y1-movarm[countryarm][armNomer].y2);
+						}
+						
+					}
+					add(movarm[countryarm][armNomer]);
+				}
+			}
+		}
+		
+	}
 	public void ArmyForMap() {
 
-		
-		// if(px1!=px||py1!=py){
-		
 		removeAll();
 		plShow();
+		//moveArmDraw();
 		for (countryarm = 1; countryarm <= 2; countryarm++) {
 			if (maparm[countryarm][armNomer] != null) {
-
+				if( maparm[countryarm][armNomer].xtogo!= maparm[countryarm][armNomer].x||
+						 maparm[countryarm][armNomer].ytogo!= maparm[countryarm][armNomer].y){
+					
+				}
 				maparm[countryarm][armNomer].setBounds(
 						maparm[countryarm][armNomer].x + px,
 						maparm[countryarm][armNomer].y + py, 45, 30);
@@ -109,10 +152,12 @@ public class Map extends JPanel implements Serializable {
 			}
 		}
 		
+		
 		repaint();
 
 	}
-
+	
+	boolean clica;
 	int armx;
 	int ary;
 	int armkolvo;
@@ -152,9 +197,9 @@ public class Map extends JPanel implements Serializable {
 				add(pl[plNomer]);
 			}
 		}
-		///pan.setBounds(0, 0, 1280, 50);
+		gammen.setBounds(0, 0, swid, 100);
 		//pan.setBackground(Color.black); Примерно таким способом можно написать меню;
-		//add(pan);
+		add(gammen);
 	}
 
 	public class Mouse implements MouseListener {
@@ -178,9 +223,9 @@ public class Map extends JPanel implements Serializable {
 			}
 			
 			
-			for (countryarm = 1; countryarm <= 2; countryarm++) {
+			for (countryarm = 1; countryarm <= 110; countryarm++) {
 				
-				
+				clica = true;
 				if (maparm[countryarm][armNomer] != null) {
 					
 					if ((e.getX() >= maparm[countryarm][armNomer].x + px & e
@@ -196,8 +241,10 @@ public class Map extends JPanel implements Serializable {
 						System.out.println("Выбрана армия страны номер "
 								+ maparm[countryarm][armNomer].countryArm);
 					}
-					maparm[countryarm][armNomer].x=e.getX()-px; // Способ перемещения армий
-					maparm[countryarm][armNomer].y=e.getY()-py;
+					 maparm[countryarm][armNomer].xtogo=e.getX()-px-22; // Способ перемещения армий
+					 maparm[countryarm][armNomer].ytogo=e.getY()-py-15;
+					 
+							 
 					ArmyForMap();
 				}
 			}

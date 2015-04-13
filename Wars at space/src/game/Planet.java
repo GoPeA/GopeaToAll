@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class Planet extends JPanel implements Serializable  {
+public class Planet extends JLabel implements Serializable  {
 
 	private static final long serialVersionUID = 6L;
 	int n;
@@ -25,7 +25,7 @@ public class Planet extends JPanel implements Serializable  {
 	int ypol, xpol;
 	JLabel tit = new JLabel();
 	public Planet (int x,int y,int rad,String name,int country,int n){
-		this.setBackground(Color.white);
+		this.setBackground(Color.BLUE);
 		this.x=Math.round(x/n);
 		this.y=Math.round(y/n);
 		this.rad=Math.round(rad/n);

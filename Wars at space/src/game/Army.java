@@ -17,6 +17,9 @@ public class Army extends JLabel implements Serializable {
 	int px,py;
 	String name,img;
 	int armNomer;
+	int xtogo;
+	int ytogo;
+	int clickX,clickY;
 	
 	public Army(int x,int y,int diferent,int kolvo,String name,int countryArm,int armNomer) {
 		//setLayout(null);
