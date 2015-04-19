@@ -38,7 +38,7 @@ public class PlanetMenu extends JDialog {
 		
 			
 		
-		mop.bCA.addActionListener(eh);
+		//mop.bCA.addActionListener(eh);
 	}
 	public class eHandler implements ActionListener{
 

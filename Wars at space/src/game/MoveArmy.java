@@ -22,11 +22,11 @@ public class MoveArmy extends JLabel{
 		this.y2=y2;
 	}
 
-	public void paint(Graphics g) {
-		g = (Graphics2D) g;
-		g.setColor(Color.BLACK);
+	//public void paint(Graphics g) {
+		//g = (Graphics2D) g;
+		//g.setColor(Color.BLACK);
 
-		g.drawLine(x1, y1, x2, y2);
-		repaint();
-	}
+		//g.drawLine(x1, y1, x2, y2);
+		//repaint();
+	//}
 }

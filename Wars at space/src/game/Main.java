@@ -105,7 +105,7 @@ public class Main extends JFrame implements ActionListener {
 		game.showMap();
 		map.plShow();
 		map.createArmy();
-		
+		//map.moveArmyMap();
 		repaint();
 		//map.ArmyPol();
 		//map.movearmPut();// создание линий для перемещения;
@@ -115,11 +115,11 @@ public class Main extends JFrame implements ActionListener {
 	}
 	public void date(){
 		countDay++;
-		if(countDay==100){
+		if(countDay==10){
 			day++;
 			day1++;
 			countDay=0;
-			
+			map.moveArmyMap();
 		}
 		
 		map.day=day;

@@ -20,7 +20,9 @@ public class Army extends JLabel implements Serializable {
 	int xtogo;
 	int ytogo;
 	int clickX,clickY;
-	
+	long go;
+	double sinus,cosinus;
+	double xplus,yplus;
 	public Army(int x,int y,int diferent,int kolvo,String name,int countryArm,int armNomer) {
 		//setLayout(null);
 		this.x=x;
